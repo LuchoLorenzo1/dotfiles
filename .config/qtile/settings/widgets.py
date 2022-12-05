@@ -69,6 +69,7 @@ primary_widgets = [
         no_update_string="0",
         display_format="{updates}",
         update_interval=1800,
+        custom_command="yay -Qu | wc -l"
     ),
     separator(),
     # icon(bg="color3", text=" "),  # Icon: nf-fa-feed
