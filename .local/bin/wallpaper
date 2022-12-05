@@ -1,0 +1,4 @@
+#!/bin/sh
+export wallpaper=$(ls $HOME/Desktop/wallpapers/ciudades | shuf -n 1)
+feh --bg-scale $HOME/Desktop/wallpapers/ciudades/${wallpaper}
+

@@ -1,0 +1,77 @@
+{
+  "align": {
+    "prefix": "align",
+    "body": [
+		"{{$%align%",
+		"${0}",
+		"}}$"
+	],
+    "description": "aligned math formulae"
+  },
+  "K": {
+    "prefix": "K",
+    "body": [
+		"${1:A} \\in \\Bbb ${2:K}^{${3:n} \\times ${3}}"
+	],
+    "description": "K en conjunto"
+  },
+  "matrix": {
+	  "prefix":"matrix",
+	  "body":[
+		"{{$%align%",
+		"\\left[\\begin{matrix}",
+		"0 & 0 & 0 \\\\",
+		"0 & 0 & 0 \\\\",
+		"0 & 0 & 0 \\\\",
+		"\\end{matrix}\\right]",
+		"}}$"
+	  ],
+	  "description": "matrix"
+  },
+  "cases": {
+    "prefix": "cases",
+    "body": [
+		"{{$",
+		"\\begin{cases}",
+		"${0}",
+		"\\end{cases}",
+		"}}$"
+	],
+    "description": "cases"
+  },
+  "coulomb": {
+    "prefix": "coulomb",
+    "body": "$\\frac{q(\\vec r - \\vec r')}{|\\vec r - \\vec r'|^3}$",
+    "description": "coulomb"
+  },
+  "img": {
+    "prefix": "img",
+    "body": "{{local:~/vimwiki/images/${1}}}",
+    "description": "img"
+  },
+  "vec": {
+    "prefix": "vec",
+    "body": "\\$\\vec$",
+    "description": "vector"
+  },
+  "bigcup": {
+    "prefix": ["bigcup", "bigu", "U"],
+    "body": "\\$\\bigcup_{${0:i=1}}^{${1:n}}$",
+    "description": "big cup"
+  },
+  "bigcap": {
+    "prefix": ["bigcap", "biga", "A"],
+    "body": "\\$\\bigcap_{${0:i=1}}^{${1:n}}$",
+    "description": "big cup"
+  },
+  "sum": {
+    "prefix": "sum",
+    "body": "\\$\\sum{${0:i=1}}^{${1:n}}$",
+    "description": "sumatoria"
+  },
+  "inf": {
+    "prefix": "inf",
+    "body": "\\$\\infty$",
+    "description": "infinito"
+  }
+}

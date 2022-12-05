@@ -1,0 +1,40 @@
+colors:
+  bright:
+    black: '#7c7c7c'
+    blue: '#b5dcfe'
+    cyan: '#dfdffe'
+    green: '#ceffab'
+    magenta: '#ff9cfe'
+    red: '#ffb6b0'
+    white: '#ffffff'
+    yellow: '#ffffcb'
+  cursor:
+    cursor: '#ffffff'
+    text: '#ffffff'
+  normal:
+    black: '#121212'
+    blue: '#96cbfe'
+    cyan: '#c6c5fe'
+    green: '#a8ff60'
+    magenta: '#ff73fd'
+    red: '#ff6c60'
+    white: '#eeeeee'
+    yellow: '#ffffb6'
+  primary:
+    background: '#000000'
+    foreground: '#ffffff'
+font:
+  bold:
+    family: CascadiaCode
+  italic:
+    family: CascadiaCode
+  normal:
+    family: Cascadia Mono
+  offset:
+    x: 0
+    y: 0
+  size: 14
+window:
+  opacity: 0.8
+  padding:
+    x: 2
