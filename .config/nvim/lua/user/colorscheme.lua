@@ -45,10 +45,10 @@ hi WinSeparator guibg=NONE "dejar siempre, separador entre panes
 
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
-hi Normal guibg=NONE guifg=NONE
-hi LineNr guibg=NONE guifg=NONE ctermbg=NONE
-hi StatusLine guifg=NONE guibg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE guifg=NONE
+" hi LineNr guibg=NONE guifg=NONE ctermbg=NONE
+" hi StatusLine guifg=NONE guibg=NONE
+" hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 " hi BufferInactive guibg=red ctermbg=red
 " hi BufferInactiveSign guibg=red ctermbg=red

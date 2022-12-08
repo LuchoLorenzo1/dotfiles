@@ -123,7 +123,14 @@ return packer.startup(function(use)
 
 
 	use "unblevable/quick-scope"
-	use "ThePrimeagen/vim-be-good"
+
+	use {
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{"nvim-lua/plenary.nvim"},
+			{"nvim-treesitter/nvim-treesitter"}
+		}
+	}
 
 	-- use "dstein64/vim-startuptime"
 	-- use "lewis6991/impatient.nvim"

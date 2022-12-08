@@ -37,8 +37,8 @@ local options = {
 	-- guicursor = "",
 	laststatus = 0,
 	nuw = 1,
-	linespace=0,
-	spelllang="es",
+	linespace = 0,
+	spelllang = "es",
 }
 
 vim.cmd [[
@@ -55,7 +55,8 @@ end
 
 vim.cmd "autocmd VimResized * wincmd ="
 
-vim.api.nvim_create_user_command("Vimwiki2PDF", ":!pandoc -f vimwiki -t pdf % -o ~/vimwiki/pdf/<f-args>.pdf", { nargs = 1 })
+vim.api.nvim_create_user_command("Vimwiki2PDF", ":!pandoc -f vimwiki -t pdf % -o ~/vimwiki/pdf/<f-args>.pdf",
+	{ nargs = 1 })
 vim.api.nvim_create_user_command("W", ":w", { nargs = 0 })
 vim.api.nvim_create_user_command("Q", ":q", { nargs = 0 })
 
@@ -71,21 +72,21 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 
 augroup vimrc_c
-    au FileType c nnoremap <leader>r :!gcc % && ./a.out <CR>
+    au FileType c nnoremap <leader>x :!gcc % && ./a.out <CR>
     au FileType c set tabstop=8
     au FileType c set softtabstop=8
     au FileType c set shiftwidth=8
 augroup END
 
 augroup vimrc_javascript
-    au FileType javascript nnoremap <leader>r :!node %<CR>
+    au FileType javascript nnoremap <leader>x :!node %<CR>
     au FileType javascript set tabstop=2
     au FileType javascript set softtabstop=2
     au FileType javascript set shiftwidth=2
 augroup END
 
 augroup vimrc_python
-    au FileType python nnoremap <leader>r :!python3 % <CR>
+    au FileType python nnoremap <leader>x :!python3 % <CR>
 augroup END
 
 " VimWiki
@@ -97,7 +98,7 @@ let g:vimwiki_list = [{
 
 augroup vimrc_vimwiki
     au FileType vimwiki nnoremap <F4> :Vimwiki2HTMLBrowse <cr>
-    au FileType vimwiki nnoremap <leader>r :Vimwiki2HTMLBrowse  <cr>
+    au FileType vimwiki nnoremap <leader> :Vimwiki2HTMLBrowse  <cr>
     au FileType vimwiki nnoremap <leader>* m`0i* <Esc>``
     au FileType vimwiki inoremap ]a á
     au FileType vimwiki inoremap ]e é
@@ -169,7 +170,7 @@ require("color-picker").setup({ -- for changing icons & mappings
 	},
 	["background_highlight_group"] = "Normal", -- default
 	["border_highlight_group"] = "FloatBorder", -- default
-  ["text_highlight_group"] = "Normal", --default
+	["text_highlight_group"] = "Normal", --default
 })
 vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
 
@@ -183,3 +184,63 @@ endfunction
 
 command Tildes exec Tildes()
 ]])
+
+
+require('refactoring').setup({
+	prompt_func_return_type = {
+		go = false,
+		java = false,
+		cpp = false,
+		c = false,
+		h = false,
+		hpp = false,
+		cxx = false,
+	},
+	prompt_func_param_type = {
+		go = false,
+		java = false,
+		cpp = false,
+		c = false,
+		h = false,
+		hpp = false,
+		cxx = false,
+	},
+	printf_statements = {},
+	print_var_statements = {
+		-- add a custom print var statement for cpp
+		-- cpp = {
+		-- 	'printf("a custom statement %%s %s", %s)'
+		-- }
+	}
+})
+
+-- Remaps for the refactoring operations currently offered by the plugin
+vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], { noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], { noremap = true, silent = true, expr = false })
+
+-- Extract block doesn't need visual mode
+vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]],
+	{ noremap = true, silent = true, expr = false })
+vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]],
+	{ noremap = true, silent = true, expr = false })
+
+-- Inline variable can also pick up the identifier currently under the cursor without visual mode
+vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]],
+	{ noremap = true, silent = true, expr = false })
+
+-- You can also use below = true here to to change the position of the printf
+-- statement (or set two remaps for either one). This remap must be made in normal mode.
+vim.api.nvim_set_keymap( "n", "<leader>df", ":lua require('refactoring').debug.printf({below = false})<CR>", { noremap = true })
+
+-- Print var
+-- Remap in normal mode and passing { normal = true } will automatically find the variable under the cursor and print it
+vim.api.nvim_set_keymap("n", "<leader>dv", ":lua require('refactoring').debug.print_var({ normal = true })<CR>",
+	{ noremap = true, silent = true})
+
+-- Remap in visual mode will print whatever is in the visual selection
+vim.api.nvim_set_keymap("v", "<leader>dv", ":lua require('refactoring').debug.print_var({})<CR>", { noremap = true })
+
+-- Cleanup function: this remap should be made in normal mode
+vim.api.nvim_set_keymap("n", "<leader>dc", ":lua require('refactoring').debug.cleanup({})<CR>", { noremap = true })

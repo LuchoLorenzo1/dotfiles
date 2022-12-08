@@ -59,6 +59,7 @@ for file; do
         *.7z) 7z x "$FULL" ;;
         *.tar.lzma) tar xf "$FULL" ;;
         *.tar.xz) tar xf "$FULL" ;;
+		*.deb) ar -x "$FULL" ;;
         *) echo "'$file' cannot be extracted via this script"; exitcode=1 ;;
     esac
 
