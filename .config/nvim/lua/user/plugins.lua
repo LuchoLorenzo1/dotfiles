@@ -40,8 +40,6 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- My plugins here
-
 	use "vimwiki/vimwiki"
 
 	use "wbthomason/packer.nvim" -- Have packer manage itself
@@ -49,14 +47,13 @@ return packer.startup(function(use)
 	use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
 	-- Colorschemes
-	use "lunarvim/colorschemes"
-	use "lunarvim/darkplus.nvim"
+	-- use "lunarvim/colorschemes"
+	-- use "lunarvim/darkplus.nvim"
 	use "gruvbox-community/gruvbox"
-	use "navarasu/onedark.nvim"
-	use "ayu-theme/ayu-vim"
-	use "tjdevries/colorbuddy.vim"
-	use "tjdevries/gruvbuddy.nvim"
-
+	-- use "navarasu/onedark.nvim"
+	-- use "ayu-theme/ayu-vim"
+	-- use "tjdevries/colorbuddy.vim"
+	-- use "tjdevries/gruvbuddy.nvim"
 	-- use "tanvirtin/monokai.nvim"
 
 	-- use "github/copilot.vim"
@@ -112,15 +109,13 @@ return packer.startup(function(use)
 			require('Comment').setup()
 		end
 	}
-	-- use "jbgutierrez/vim-better-comments"
 
-	use "norcalli/nvim-colorizer.lua"
+	-- use "norcalli/nvim-colorizer.lua"
 
 	use "lewis6991/gitsigns.nvim"
 	use "tpope/vim-fugitive"
 	use "tpope/vim-rhubarb"
 	use "junegunn/gv.vim"
-
 
 	use "unblevable/quick-scope"
 
@@ -136,11 +131,16 @@ return packer.startup(function(use)
 	-- use "lewis6991/impatient.nvim"
 	-- use "Yggdroot/indentLine"
 
-	use ({"ziontee113/color-picker.nvim",
-		config = function()
-			require("color-picker")
-		end,
-	})
+	-- use ({"ziontee113/color-picker.nvim",
+	-- 	config = function()
+	-- 		require("color-picker")
+	-- 	end,
+	-- })
+
+	use "mbbill/undotree"
+
+
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

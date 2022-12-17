@@ -116,3 +116,9 @@ telescope.setup {
 		-- please take a look at the readme of the extension you want to configure
 	},
 }
+
+vim.api.nvim_set_keymap("n", "<leader>t", ":Telescope <CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.git_files()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<c-f>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua require'telescope.builtin'.live_grep()<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>lua require'telescope.builtin'.buffers()<CR>", { silent = true })

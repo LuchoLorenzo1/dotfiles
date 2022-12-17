@@ -32,3 +32,43 @@ vim.api.nvim_create_user_command("AutoRun", function()
 	attach_to_buffer(bufnr, pattern, command)
 end, {})
 
+local menem = vim.api.nvim_create_namespace('menem')
+
+local testing = function()
+	local bufnr = 0
+	-- vim.api.nvim_buf_set_extmark(bufnr, menem, 64, 0, {
+	-- virt_text = { { 'Test Passed' } },
+	-- })
+	local l = function()
+		return 0
+	end
+
+	vim.fn.jobstart({ 'pytest', 'main.py', '--json-report' }, {
+		stdout_buffered = true,
+		on_stdout = l,
+		on_stderr = l,
+	})
+
+	print(vim.json.decode("{}"))
+
+	vim.api.nvim_buf_set_extmark(bufnr, menem, 73, 0, {
+		virt_text = { { 'Test Failed' } },
+	})
+	vim.diagnostic.set(menem, bufnr, { {
+		bufnr = 0,
+		lnum = 64,
+		col = 0,
+		severity = vim.diagnostic.severity.ERROR,
+		message = "Test Failed",
+		source = "menem",
+		user_data = {},
+	} })
+end
+
+vim.api.nvim_create_user_command("Test", function()
+	testing()
+end, {})
+
+vim.api.nvim_create_user_command("Clear", function()
+	vim.api.nvim_buf_clear_namespace(0, menem, 0, -1)
+end, {})
