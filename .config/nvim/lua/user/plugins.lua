@@ -48,7 +48,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes"
-	-- use "lunarvim/darkplus.nvim"
+	use "lunarvim/darkplus.nvim"
 	use "gruvbox-community/gruvbox"
 	-- use "navarasu/onedark.nvim"
 	-- use "ayu-theme/ayu-vim"
