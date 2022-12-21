@@ -138,6 +138,19 @@ return packer.startup(function(use)
 	-- })
 
 	use "mbbill/undotree"
+	use {
+	  'nvim-lualine/lualine.nvim',
+	  -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+
+	-- use {
+	--   'debugloop/telescope-undo.nvim',
+	--   requires = { 'nvim-telescope/telescope.nvim' },
+	--   config = function()
+	-- 	require("telescope").load_extension("undo")
+	-- 	-- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+	--   end,
+	-- }
 
 
 

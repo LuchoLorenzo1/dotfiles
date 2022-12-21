@@ -44,6 +44,7 @@ local options = {
 	spelllang = "es",
 }
 
+
 vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
@@ -61,8 +62,10 @@ hi! link Bold GruvboxAquaBold
 ]]
 
 vim.cmd [[
+
 let g:netrw_banner=0
 let g:netrw_liststyle=3
+let g:netrw_keepdir=0
 
 augroup vimrc_c
     au FileType c nnoremap <leader>x :!gcc % && ./a.out <CR>
@@ -103,27 +106,29 @@ augroup vimrc_vimwiki
 augroup END
 
 
-set statusline=
-" set statusline+=%#PmenuSel#
-set statusline+=%1*\ %{fugitive#statusline()}
-" set statusline+=%#LineNr#
-set statusline+=\ %1*\%f
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=%1*\%m
-set statusline+=\ %1*\%y
-set statusline+=\ %1*\[%{&fileformat}\]
-set statusline+=\ %1*\%{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
 
-hi User1 guifg=#ffffff guibg=NONE gui=bold
+" set statusline=
+
+" set statusline=
+" set statusline+=%#PmenuSel#
+" set statusline+=%1*\ %{fugitive#statusline()}
+" set statusline+=%#LineNr#
+" set statusline+=\ %1*\%f
+" set statusline+=%=
+" set statusline+=%#CursorColumn#
+" set statusline+=%1*\%m
+" set statusline+=\ %1*\%y
+" set statusline+=\ %1*\[%{&fileformat}\]
+" set statusline+=\ %1*\%{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\ %p%%
+" set statusline+=\ %l:%c
+
+" hi User1 guifg=#ffffff guibg=NONE gui=bold
 
 inoremap <expr> <Tab> search('\%#[]>())}''"`]', 'n') ? '<Right>' : '<Tab>'
 
-"autocmd VimResized * wincmd =
+" autocmd VimResized * wincmd =
 autocmd BufWritePre * %s/\s\+$//e
-
 
 " set foldmethod=manual
 "set foldexpr=nvim_treesitter#foldexpr()
@@ -140,39 +145,23 @@ au FileType * set fo-=c fo-=r fo-=o
 source $HOME/.local/share/nvim/site/pack/packer/start/vim-sandwich/macros/sandwich/keymap/surround.vim
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 ]]
 
--- local opts = { noremap = true, silent = true }
--- vim.keymap.set("n", "<C-c>", "<cmd>PickColor<cr>", opts)
--- vim.keymap.set("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
--- vim.keymap.set("n", "your_keymap", "<cmd>ConvertHEXandRGB<cr>", opts)
--- vim.keymap.set("n", "your_keymap", "<cmd>ConvertHEXandHSL<cr>", opts)
--- require("color-picker").setup({ -- for changing icons & mappings
--- 	-- ["icons"] = { "ﱢ", "" },
--- 	-- ["icons"] = { "ﮊ", "" },
--- 	-- ["icons"] = { "", "ﰕ" },
--- 	-- ["icons"] = { "", "" },
--- 	-- ["icons"] = { "", "" },
--- 	["icons"] = { "ﱢ", "" },
--- 	["border"] = "rounded", -- none | single | double | rounded | solid | shadow
--- 	["keymap"] = { -- mapping example:
--- 		["U"] = "<Plug>ColorPickerSlider5Decrease",
--- 		["O"] = "<Plug>ColorPickerSlider5Increase",
--- 	},
--- 	["background_highlight_group"] = "Normal", -- default
--- 	["border_highlight_group"] = "FloatBorder", -- default
--- 	["text_highlight_group"] = "Normal", --default
--- })
--- vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
+vim.api.nvim_create_autocmd('TextYankPost', {
+	group= vim.api.nvim_create_augroup('yank_highlight', {}),
+	pattern='*',
+	callback = function ()
+		vim.highlight.on_yank({ higroup='IncSearch', timeout = 200 })
+	end
+})
 
-vim.cmd([[
-function Tildes()
-	:%s/ ́o/ó/g
-	:%s/ ́a/á/g
-	:%s/ ̃n/ñ/g
-	:%s/ ́ı/í/g
-endfunction
-command Tildes exec Tildes()
-]])
-
-
+-- vim.cmd([[
+-- function Tildes()
+-- 	:%s/ ́o/ó/g
+-- 	:%s/ ́a/á/g
+-- 	:%s/ ̃n/ñ/g
+-- 	:%s/ ́ı/í/g
+-- endfunction
+-- command tildes exec Tildes()
+-- ]])

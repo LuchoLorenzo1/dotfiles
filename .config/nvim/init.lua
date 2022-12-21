@@ -1,6 +1,6 @@
 require "user.plugins"
-require "user.cmp"
-require "user.snippets"
+-- require "user.cmp"
+-- require "user.snippets"
 require "user.lsp"
 require "user.keymaps"
 require "user.options"
