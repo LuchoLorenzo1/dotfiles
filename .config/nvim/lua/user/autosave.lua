@@ -72,3 +72,5 @@ end, {})
 vim.api.nvim_create_user_command("Clear", function()
 	vim.api.nvim_buf_clear_namespace(0, menem, 0, -1)
 end, {})
+
+return {attach_to_buffer}

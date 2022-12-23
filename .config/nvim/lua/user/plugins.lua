@@ -143,19 +143,6 @@ return packer.startup(function(use)
 	  -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
 
-	-- use {
-	--   'debugloop/telescope-undo.nvim',
-	--   requires = { 'nvim-telescope/telescope.nvim' },
-	--   config = function()
-	-- 	require("telescope").load_extension("undo")
-	-- 	-- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-	--   end,
-	-- }
-
-
-
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

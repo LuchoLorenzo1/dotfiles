@@ -38,6 +38,9 @@ vim.api.nvim_create_user_command("Color", function()
 end, {})
 
 Color('darkplus')
+vim.cmd[[
+	hi! link VimwikiLink @variable.builtin
+]]
 
 -- vim.cmd([[
 

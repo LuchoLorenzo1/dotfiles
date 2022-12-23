@@ -25,19 +25,19 @@ telescope.setup {
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
-		      layout_config = {
-         horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
-            results_width = 0.8,
-         },
-         vertical = {
-            mirror = false,
-         },
-         width = 0.87,
-         height = 0.80,
-         preview_cutoff = 120,
-      },
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.55,
+				results_width = 0.8,
+			},
+			vertical = {
+				mirror = false,
+			},
+			width = 0.87,
+			height = 0.80,
+			preview_cutoff = 120,
+		},
 		mappings = {
 			i = {
 				["<C-n>"] = actions.cycle_history_next,
@@ -108,13 +108,7 @@ telescope.setup {
 			theme = "dropdown",
 		}
 	},
-	extensions = {
-		-- Your extension configuration goes here:
-		-- extension_name = {
-		--   extension_config_key = value,
-		-- }
-		-- please take a look at the readme of the extension you want to configure
-	},
+	extensions = {},
 }
 
 vim.api.nvim_set_keymap("n", "<leader>t", ":Telescope <CR>", { silent = true })

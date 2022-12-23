@@ -10,51 +10,26 @@ if not snip_status_ok then
 end
 
 --   פּ ﯟ   some other good icons
-local kind_icons = {
-	Text = "",
-	Method = "m",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
-	Interface = "",
-	Module = "",
-	Property = "",
-	Unit = "",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = "",
-}
--- find more here: https://www.nerdfonts.com/cheat-sheet
+local kind_icons = { Text = "", Method = "m", Function = "", Constructor = "", Field = "", Variable = "",
+	Class = "", Interface = "", Module = "", Property = "", Unit = "", Value = "", Enum = "",
+	Keyword = "", Snippet = "", Color = "", File = "", Reference = "", Folder = "", EnumMember = "",
+	Constant = "", Struct = "", Event = "", Operator = "", TypeParameter = "", }
 
 
 cmp.setup {
 	mapping = {
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-y>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-		["<C-e>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+		-- ["<C-y>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+		-- ["<C-e>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		-- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
 		["<C-q>"] = cmp.mapping {
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
 		},
-		-- Accept currently selected item. If none selected, `select` first item.
-		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm { select = true },
+		["<c-y>"] = cmp.mapping.confirm { select = true },
+		-- ["<CR>"] = cmp.mapping.confirm { select = true },
 
 		-- ["<C-j>"] = cmp.mapping(function(fallback)
 		-- 	if luasnip.expandable() then
@@ -95,8 +70,8 @@ cmp.setup {
 		end,
 	},
 	sources = {
-		{ name = "luasnip"},
-		{ name = "nvim_lsp"},
+		{ name = "luasnip" },
+		{ name = "nvim_lsp" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
 	},
@@ -114,5 +89,6 @@ cmp.setup {
 		end,
 	},
 }
+
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
