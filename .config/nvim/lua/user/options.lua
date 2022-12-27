@@ -56,6 +56,7 @@ vim.api.nvim_create_user_command("Vimwiki2PDF", ":!pandoc -f vimwiki -t pdf % -o
 vim.api.nvim_create_user_command("W", ":w", { nargs = 0 })
 vim.api.nvim_create_user_command("Q", ":q", { nargs = 0 })
 
+
 vim.cmd [[
 match Bold /dem:\|obs:\|def:/
 hi! link Bold GruvboxAquaBold
@@ -81,9 +82,6 @@ augroup vimrc_javascript
     au FileType javascript set shiftwidth=2
 augroup END
 
-augroup vimrc_python
-    au FileType python nnoremap <leader>x :!python3 % <CR>
-augroup END
 
 " VimWiki
 let g:vimwiki_list = [{
@@ -165,3 +163,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- endfunction
 -- command tildes exec Tildes()
 -- ]])
+require("workspaces").setup({
+    hooks = {
+        open = { "Telescope find_files" },
+    }
+})
+
+vim.api.nvim_create_user_command("Clear", function()
+	for _, win in ipairs(vim.api.nvim_list_wins()) do local config = vim.api.nvim_win_get_config(win); if config.relative ~= "" then vim.api.nvim_win_close(win, false); print('Closing window', win) end end
+end, {})

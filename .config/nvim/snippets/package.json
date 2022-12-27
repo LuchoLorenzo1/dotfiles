@@ -11,6 +11,10 @@
         "path": "./vimwiki.json"
       },
       {
+        "language": "sh",
+        "path": "./shell.json"
+      },
+      {
         "language": "c",
         "path": "./c.json"
       },

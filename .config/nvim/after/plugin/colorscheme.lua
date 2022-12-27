@@ -13,44 +13,26 @@ local function Color(c)
 	end
 
 	if c == 'gruvbox' then
-		vim.cmd([[
-			hi GitSignsAdd guibg=NONE ctermfg=142 guifg=#b8bb26 guibg=NONE
-			hi GitSignsChange guibg=NONE ctermfg=108 guifg=#8ec07c guibg=NONE
-			hi GitSignsDelete guibg=NONE ctermfg=167 guifg=#fb4934 guibg=NONE
-			hi GruvboxYellowSign ctermfg=214 ctermbg=NONE guifg=#fabd2f guibg=NONE
-			hi GruvboxRedSign ctermfg=167 ctermbg=NONE guifg=#fb4934 guibg=NONE
-			hi GruvboxAquaSign ctermfg=108 ctermbg=NONE guifg=#8ec07c guibg=NONE
-			hi GruvboxBlueSign ctermfg=109 ctermbg=NONE guifg=#83a598 guibg=NONE
+		vim.api.nvim_set_hl(0, "GitSignsAdd", {guibg="none", ctermfg="142", guifg="#b8bb26"})
+		vim.api.nvim_set_hl(0, "GitSignsChange", {guibg="none", ctermfg=108, guifg="#8ec07c"})
+		vim.api.nvim_set_hl(0, "GitSignsDelete", {guibg="none", ctermfg=167, guifg="#fb4934"})
+		vim.api.nvim_set_hl(0, "GruvboxYellowSign", {ctermfg=214, ctermbg="none", guifg="#fabd2f"})
+		vim.api.nvim_set_hl(0, "GruvboxRedSign", {ctermfg=167, ctermbg="none", guifg="#fb4934"})
+		vim.api.nvim_set_hl(0, "GruvboxAquaSign", {ctermfg=108, ctermbg="none", guifg="#8ec07c"})
+		vim.api.nvim_set_hl(0, "GruvboxBlueSign", {ctermfg=109, ctermbg="none", guifg="#83a598"})
 
-			hi LspDiagnosticsSignWarning ctermfg=214 ctermbg=NONE guifg=#fabd2f guibg=NONE cterm=NONE gui=NONE
-			hi LspDiagnosticsDefaultWarning ctermfg=214 ctermbg=NONE guifg=#fabd2f guibg=NONE cterm=NONE gui=NONE
-			hi LspDiagnosticsSignError ctermfg=167 ctermbg=NONE guifg=#fb4934 guibg=NONE
-			hi LspDiagnosticsSignHint ctermfg=108 ctermbg=NONE guifg=#8ec07c guibg=NONE
-			hi LspDiagnosticsSignInformation ctermfg=109 ctermbg=NONE guifg=#83a598 guibg=NONE
-
-		]])
+		vim.api.nvim_set_hl(0, "LspDiagnosticsSignWarning", {ctermfg=214, ctermbg="none", guifg="#fabd2f", guibg="none", cterm="none", gui="none"})
+		vim.api.nvim_set_hl(0, "LspDiagnosticsDefaultWarning", {ctermfg=214, ctermbg="none", guifg="#fabd2f", guibg="none", cterm="none", gui="none"})
+		vim.api.nvim_set_hl(0, "LspDiagnosticsSignError", {ctermfg=167, ctermbg="none", guifg="#fb4934", guibg="none"})
+		vim.api.nvim_set_hl(0, "LspDiagnosticsSignHint", {ctermfg=108, ctermbg="none", guifg="#8ec07c", guibg="none"})
+		vim.api.nvim_set_hl(0, "LspDiagnosticsSignInformation", {ctermfg=109, ctermbg="none", guifg="#83a598", guibg="none"})
 	end
 end
 
-vim.api.nvim_create_user_command("Color", function()
+vim.api.nvim_create_user_command("Colorscheme", function()
 	local colorscheme = vim.fn.input("Colorscheme: ")
 	Color(colorscheme)
 end, {})
 
 Color('darkplus')
-vim.cmd[[
-	hi! link VimwikiLink @variable.builtin
-]]
-
--- vim.cmd([[
-
--- "" GRUVBOX WITH OPACITY :
--- hi GitSignsAdd guibg=NONE ctermfg=142 guifg=#b8bb26 guibg=NONE
--- hi GitSignsChange guibg=NONE ctermfg=108 guifg=#8ec07c guibg=NONE
--- hi GitSignsDelete guibg=NONE ctermfg=167 guifg=#fb4934 guibg=NONE
---
--- hi GruvboxYellowSign ctermfg=214 ctermbg=NONE guifg=#fabd2f guibg=NONE
--- hi GruvboxRedSign ctermfg=167 ctermbg=NONE guifg=#fb4934 guibg=NONE
--- hi GruvboxAquaSign ctermfg=108 ctermbg=NONE guifg=#8ec07c guibg=NONE
--- hi GruvboxBlueSign ctermfg=109 ctermbg=NONE guifg=#83a598 guibg=NONE
--- ]])
+vim.api.nvim_set_hl(0, "VimwikiLink", {link="@variable.builtin"})

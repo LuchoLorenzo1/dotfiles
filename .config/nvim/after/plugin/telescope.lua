@@ -4,12 +4,13 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
+telescope.load_extension("workspaces")
 
 telescope.setup {
 	defaults = {
 
 		file_ignore_patterns = { "node_modules", ".git" },
-		prompt_prefix = "> ", --[[ " " ]]
+		prompt_prefix = "  ", --[[ " " ]]
 		selection_caret = "> ", --[[  " " ]]
 
 		-- path_display = { "smart" },
@@ -108,7 +109,12 @@ telescope.setup {
 			theme = "dropdown",
 		}
 	},
-	extensions = {},
+	extensions = {
+		workspaces = {
+			-- keep insert mode after selection in the picker, default is false
+			keep_insert = true,
+		}
+	},
 }
 
 vim.api.nvim_set_keymap("n", "<leader>t", ":Telescope <CR>", { silent = true })
@@ -116,3 +122,5 @@ vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.g
 vim.api.nvim_set_keymap("n", "<c-f>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua require'telescope.builtin'.live_grep()<CR>", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>lua require'telescope.builtin'.buffers()<CR>", { silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>Telescope workspaces<CR>", { silent = true })

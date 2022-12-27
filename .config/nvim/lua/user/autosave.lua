@@ -12,7 +12,7 @@ local attach_to_buffer = function(output_bufnr, pattern, command)
 					vim.api.nvim_buf_set_lines(output_bufnr, -1, -1, false, data)
 				end
 			end
-			vim.fn.jobstart({ table.unpack(command), vim.api.nvim_buf_get_name(0) }, {
+			vim.fn.jobstart(command, {
 				stdout_buffered = true,
 				on_stdout = append_data,
 				on_stderr = append_data,
@@ -21,15 +21,14 @@ local attach_to_buffer = function(output_bufnr, pattern, command)
 	})
 end
 
-
 vim.api.nvim_create_user_command("AutoRun", function()
-	vim.cmd('split')
+	vim.cmd('vsplit')
 	local win = vim.api.nvim_get_current_win()
 	local bufnr = vim.api.nvim_create_buf(true, true)
 	vim.api.nvim_win_set_buf(win, bufnr)
-	local pattern = vim.fn.input("Pattern: ")
+	-- local pattern = vim.fn.input("Pattern: ")
 	local command = vim.split(vim.fn.input("Command: "), " ")
-	attach_to_buffer(bufnr, pattern, command)
+	attach_to_buffer(bufnr, '', command)
 end, {})
 
 local menem = vim.api.nvim_create_namespace('menem')
@@ -65,12 +64,22 @@ local testing = function()
 	} })
 end
 
-vim.api.nvim_create_user_command("Test", function()
-	testing()
-end, {})
+-- vim.api.nvim_create_user_command("Test", function()
+-- 	testing()
+-- end, {})
 
-vim.api.nvim_create_user_command("Clear", function()
-	vim.api.nvim_buf_clear_namespace(0, menem, 0, -1)
-end, {})
+-- vim.api.nvim_create_user_command("Clear", function()
+-- 	vim.api.nvim_buf_clear_namespace(0, menem, 0, -1)
+-- end, {})
 
-return {attach_to_buffer}
+
+local python = function(a)
+	local b = vim.api.nvim_get_current_win()
+	vim.cmd('vsplit')
+	local win = vim.api.nvim_get_current_win()
+	local bufnr = vim.api.nvim_create_buf(true, true)
+	vim.api.nvim_win_set_buf(win, bufnr)
+	attach_to_buffer(bufnr, '', 'python3 ' .. a)
+end
+
+return {python}

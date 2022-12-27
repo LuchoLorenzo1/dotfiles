@@ -143,6 +143,12 @@ return packer.startup(function(use)
 	  -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
 
+
+	use "ThePrimeagen/harpoon"
+	use "ray-x/lsp_signature.nvim"
+	use "natecraddock/workspaces.nvim"
+
+	use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
