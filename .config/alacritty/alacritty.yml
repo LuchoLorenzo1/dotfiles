@@ -8,9 +8,6 @@ colors:
     red: '#ffb6b0'
     white: '#ffffff'
     yellow: '#ffffcb'
-  cursor:
-    cursor: '#ffffff'
-    text: '#ffffff'
   normal:
     black: '#121212'
     blue: '#96cbfe'
@@ -37,4 +34,4 @@ font:
 window:
   opacity: 0.8
   padding:
-    x: 2
+    x: 0
