@@ -7,15 +7,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
 if [ -f $sysresources ]; then
-
-
-
-
-
-
-
     xrdb -merge $sysresources
-
 fi
 
 if [ -f $sysmodmap ]; then
@@ -23,15 +15,7 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -39,7 +23,6 @@ if [ -f "$usermodmap" ]; then
 fi
 
 # start some nice programs
-
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
   [ -x "$f" ] && . "$f"
@@ -58,10 +41,9 @@ export LD_LIBRARY_PATH=/usr/lib/
 
 # export wallpaper=$(ls $HOME/Desktop/wallpapers/ciudades | shuf -n 1)
 # feh --bg-scale $HOME/Desktop/wallpapers/ciudades/${wallpaper} &
-feh --bg-scale $HOME/Desktop/wallpapers/ciudades/uruguay.jpg &
 
+wallpaper &
 setxkbmap -option caps:escape &
-
 xrandr --output DVI-D-0 --mode 1920x1080 --rate 144.00 &
 redshift -l -34:-58 -t 5000:2000 &
 # udiskie -t &
