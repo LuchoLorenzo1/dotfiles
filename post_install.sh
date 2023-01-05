@@ -71,7 +71,7 @@ clear
 echo -e "${yellowColor}Instalar cosas de la qtile? [Y/n]${endColor}"; read response
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	sudo pacman --noconfirm -S qtile
-	pip install --no-input  psutil dbus-next
+	pip install --no-input psutil dbus-next
 	sleep 1
 fi
 
@@ -102,7 +102,12 @@ fi
 
 echo -e "${yellowColor}Instalar paquetes NO TAN esenciales? [Y/n]${endColor}"; read response
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
-	yay --noconfirm -S spotify flameshot discord htop pinta ueberzug unzip poppler ripgrep fd zip vlc
-	pip install --no-input numpy pandas scipy matplotlib
+	yay --noconfirm -S flameshot discord htop pinta ueberzug unzip poppler ripgrep fd zip vlc
+	sleep 1
+fi
+
+echo -e "${yellowColor}Instalar paquetes de data science? [Y/n]${endColor}"; read response
+if [[ $response =~ [yY] ]] || [ -z $response ]; then
+	pip install --no-input numpy pandas scipy matplotlib jupyter geopandas
 	sleep 1
 fi
