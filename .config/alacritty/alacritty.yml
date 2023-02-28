@@ -22,11 +22,11 @@ colors:
     foreground: '#ffffff'
 font:
   bold:
-    family: CascadiaCode
+    family: JetBrains Mono Nerd Font
   italic:
-    family: CascadiaCode
+    family: JetBrains Mono Nerd Font
   normal:
-    family: Cascadia Mono
+    family: JetBrains Mono Nerd Font
   offset:
     x: 0
     y: 0
