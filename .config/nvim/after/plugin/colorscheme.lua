@@ -1,8 +1,7 @@
 local nobg = { bg = "none", fg = "none"}
 
 local function transparent(c)
-    	local hl_transparent = { "WinSeparator", "Normal", "NormalNC", "LineNr", "StatusLine", "Column", "ColorColumn",
-    		"SignColumn", "EndOfBuffer" }
+    	local hl_transparent = { "WinSeparator", "Normal", "NormalNC", "LineNr", "StatusLine", "Column", "ColorColumn", "SignColumn", "EndOfBuffer" }
 
     	-- local hl_lsp = { "LspDiagnosticsSignWarning", "LspDiagnosticsDefaultWarning", "LspDiagnosticsSignError",
     	-- 	"LspDiagnosticsSignHint", "LspDiagnosticsSignInformation", "LspDiagnosticsVirtualTextError", "LspDiagnosticsVirtualSignWarning", "LspDiagnosticsVirtualTextHint"}
@@ -42,15 +41,18 @@ end, {})
 -- require('noirbuddy').setup {
 --   preset = 'slate',
 -- }
--- transparent('noirbuddy')
-vim.cmd.colorscheme('gruvbox')
+-- vim.cmd.colorscheme('habamax')
+vim.cmd.colorscheme('darkplus')
+-- transparent('habamax')
 
 -- vim.api.nvim_set_hl(0, "VimwikiLink", {link="@variable.builtin"})
-vim.api.nvim_set_hl(0, "SignColumn", {link="GruvboxBg1"})
-vim.api.nvim_set_hl(0, "GitSignsAdd", {bg="none", ctermfg=142, fg="#b8bb26"})
-vim.api.nvim_set_hl(0, "GitSignsChange", {bg="none", ctermfg=108, fg="#8ec07c"})
-vim.api.nvim_set_hl(0, "GitSignsDelete", {bg="none", ctermfg=167, fg="#fb4934"})
-vim.api.nvim_set_hl(0, "GruvboxYellowSign", {ctermfg=214, ctermbg="none", fg="#fabd2f"})
-vim.api.nvim_set_hl(0, "GruvboxRedSign", {ctermfg=167, ctermbg="none", fg="#fb4934"})
-vim.api.nvim_set_hl(0, "GruvboxAquaSign", {ctermfg=108, ctermbg="none", fg="#8ec07c"})
-vim.api.nvim_set_hl(0, "GruvboxBlueSign", {ctermfg=109, ctermbg="none", fg="#83a598"})
+-- GRUVBOX
+-- vim.cmd.colorscheme('gruvbox')
+-- vim.api.nvim_set_hl(0, "SignColumn", {link="GruvboxBg1"})
+-- vim.api.nvim_set_hl(0, "GitSignsAdd", {bg="none", ctermfg=142, fg="#b8bb26"})
+-- vim.api.nvim_set_hl(0, "GitSignsChange", {bg="none", ctermfg=108, fg="#8ec07c"})
+-- vim.api.nvim_set_hl(0, "GitSignsDelete", {bg="none", ctermfg=167, fg="#fb4934"})
+-- vim.api.nvim_set_hl(0, "GruvboxYellowSign", {ctermfg=214, ctermbg="none", fg="#fabd2f"})
+-- vim.api.nvim_set_hl(0, "GruvboxRedSign", {ctermfg=167, ctermbg="none", fg="#fb4934"})
+-- vim.api.nvim_set_hl(0, "GruvboxAquaSign", {ctermfg=108, ctermbg="none", fg="#8ec07c"})
+-- vim.api.nvim_set_hl(0, "GruvboxBlueSign", {ctermfg=109, ctermbg="none", fg="#83a598"})

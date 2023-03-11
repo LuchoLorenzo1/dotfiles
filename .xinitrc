@@ -43,7 +43,7 @@ wallpaper &
 setxkbmap -option caps:escape &
 xrandr --output DVI-D-1 --mode 1920x1080 --rate 144.00 &
 redshift -l -34:-58 -t 5000:2000 &
-picom &
+# picom &
 # udiskie -t &
 # cbatticon &
 # nm-applet &

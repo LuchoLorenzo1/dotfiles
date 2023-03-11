@@ -38,14 +38,11 @@ packer.init {
 	},
 }
 
--- Install your plugins here
 return packer.startup(function(use)
-
-	use "wbthomason/packer.nvim" -- Have packer manage itself
-	use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-	use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+	use "wbthomason/packer.nvim"
+	use "nvim-lua/popup.nvim"
+	use "nvim-lua/plenary.nvim"
 	use "vimwiki/vimwiki"
-
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes"
@@ -56,33 +53,32 @@ return packer.startup(function(use)
 	-- use "tjdevries/colorbuddy.vim"
 	-- use "tjdevries/gruvbuddy.nvim"
 	-- use "tanvirtin/monokai.nvim"
-	use {
-	  "jesseleite/nvim-noirbuddy",
-	  requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
-	}
+	-- use {
+	--   "jesseleite/nvim-noirbuddy",
+	--   requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
+	-- }
 
 	-- use "github/copilot.vim"
 
 	-- cmp plugins
-	use "hrsh7th/nvim-cmp" -- The completion plugin
-	use "hrsh7th/cmp-buffer" -- buffer completions
-	use "hrsh7th/cmp-path" -- path completions
-	use "hrsh7th/cmp-cmdline" -- cmdline completions
-	use "saadparwaiz1/cmp_luasnip" -- snippet completions
+	use "hrsh7th/nvim-cmp"
+	use "hrsh7th/cmp-buffer"
+	use "hrsh7th/cmp-path"
+	use "hrsh7th/cmp-cmdline"
+	use "saadparwaiz1/cmp_luasnip"
 	use "hrsh7th/cmp-nvim-lsp"
 	use "hrsh7th/cmp-nvim-lua"
 
 	-- snippets
-	use "L3MON4D3/LuaSnip" --snippet engine
-	use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+	use "L3MON4D3/LuaSnip"
+	use "rafamadriz/friendly-snippets"
 
 	-- LSP
-	use "neovim/nvim-lspconfig" -- enable LSP
-	use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-	use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-	-- use "glepnir/lspsaga.nvim" -- Ventanitas facheras para lsp
-	use "jose-elias-alvarez/null-ls.nvim"
+	use "neovim/nvim-lspconfig"
 	use "ray-x/lsp_signature.nvim"
+	use "williamboman/mason.nvim"
+	use "williamboman/mason-lspconfig.nvim"
+	-- use "jose-elias-alvarez/null-ls.nvim"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
@@ -108,15 +104,12 @@ return packer.startup(function(use)
 	use "matze/vim-move"
 	use "tpope/vim-repeat"
 
-	-- use "tpope/vim-commentary"
 	use {
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
 		end
 	}
-
-	-- use "norcalli/nvim-colorizer.lua"
 
 	use "lewis6991/gitsigns.nvim"
 	use "tpope/vim-fugitive"
@@ -125,38 +118,15 @@ return packer.startup(function(use)
 
 	use "unblevable/quick-scope"
 
-	use {
-		"ThePrimeagen/refactoring.nvim",
-		requires = {
-			{"nvim-lua/plenary.nvim"},
-			{"nvim-treesitter/nvim-treesitter"}
-		}
-	}
-
-	-- use "dstein64/vim-startuptime"
-	-- use "lewis6991/impatient.nvim"
-	-- use "Yggdroot/indentLine"
-
-	-- use ({"ziontee113/color-picker.nvim",
-	-- 	config = function()
-	-- 		require("color-picker")
-	-- 	end,
-	-- })
-
 	use "mbbill/undotree"
-	use {
-	  'nvim-lualine/lualine.nvim',
-	  -- requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
+	use "nvim-lualine/lualine.nvim"
 
 	use "ThePrimeagen/harpoon"
-	use "natecraddock/workspaces.nvim"
 
 	use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+	use { 'rhysd/git-messenger.vim' }
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
-
-	use { 'rhysd/git-messenger.vim' }
-
 end)

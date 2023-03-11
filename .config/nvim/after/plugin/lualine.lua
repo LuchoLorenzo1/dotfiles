@@ -3,6 +3,7 @@ local lualine = require('lualine')
 lualine.setup {
   options = {
     icons_enabled = false,
+    -- theme = 'iceberg_dark',
     theme = 'auto',
 
 	section_separators = { left = '', right = '' },
@@ -14,7 +15,7 @@ lualine.setup {
     },
     ignore_focus = {},
     always_divide_middle = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,

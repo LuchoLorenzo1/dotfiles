@@ -163,11 +163,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- endfunction
 -- command tildes exec Tildes()
 -- ]])
-require("workspaces").setup({
-    hooks = {
-        open = { "Telescope find_files" },
-    }
-})
 
 vim.api.nvim_create_user_command("Clear", function()
 	for _, win in ipairs(vim.api.nvim_list_wins()) do local config = vim.api.nvim_win_get_config(win); if config.relative ~= "" then vim.api.nvim_win_close(win, false) end end
