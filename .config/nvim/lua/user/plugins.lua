@@ -126,6 +126,14 @@ return packer.startup(function(use)
 	use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 	use { 'rhysd/git-messenger.vim' }
 
+	-- use {
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	requires = {
+	-- 		{"nvim-lua/plenary.nvim"},
+	-- 		{"nvim-treesitter/nvim-treesitter"}
+	-- 	}
+	-- }
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

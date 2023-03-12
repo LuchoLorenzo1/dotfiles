@@ -1,4 +1,9 @@
--- require('refactoring').setup({
+local refactoring_status, refactoring = pcall(require, "refactoring")
+if not refactoring_status then
+	return
+end
+--
+-- refactoring.setup({
 -- 	prompt_func_return_type = {
 -- 		go = false,
 -- 		java = false,
