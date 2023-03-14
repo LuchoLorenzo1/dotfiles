@@ -31,6 +31,8 @@ vim.api.nvim_create_user_command("AutoRun", function()
 	attach_to_buffer(bufnr, '', command)
 end, {})
 
+vim.api.nvim_set_keymap('n', "<leader>x", ":AutoRun<CR>", {})
+
 local menem = vim.api.nvim_create_namespace('menem')
 
 local testing = function()
@@ -63,23 +65,3 @@ local testing = function()
 		user_data = {},
 	} })
 end
-
--- vim.api.nvim_create_user_command("Test", function()
--- 	testing()
--- end, {})
-
--- vim.api.nvim_create_user_command("Clear", function()
--- 	vim.api.nvim_buf_clear_namespace(0, menem, 0, -1)
--- end, {})
-
-
-local python = function(a)
-	local b = vim.api.nvim_get_current_win()
-	vim.cmd('vsplit')
-	local win = vim.api.nvim_get_current_win()
-	local bufnr = vim.api.nvim_create_buf(true, true)
-	vim.api.nvim_win_set_buf(win, bufnr)
-	attach_to_buffer(bufnr, '', 'python3 ' .. a)
-end
-
-return {python}

@@ -13,11 +13,9 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 local lsp_keymaps = function(bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
 	vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
@@ -35,8 +33,11 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 
+<<<<<<< HEAD
 	-- vim.keymap.set('n', '<space>F', function() vim.lsp.buf.format { async = true } end, bufopts)
 
+=======
+>>>>>>> 0632b07a7895a1b183208553e6537778f4d56e41
 	vim.api.nvim_create_user_command("Format", function()
 		vim.lsp.buf.format()
 	end, {})
@@ -84,5 +85,10 @@ require("mason-lspconfig").setup_handlers {
 				}
 			}
 		}
+<<<<<<< HEAD
 	end,
+=======
+	end
+
+>>>>>>> 0632b07a7895a1b183208553e6537778f4d56e41
 }
