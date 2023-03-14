@@ -33,11 +33,8 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
 	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
 
-<<<<<<< HEAD
 	-- vim.keymap.set('n', '<space>F', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-=======
->>>>>>> 0632b07a7895a1b183208553e6537778f4d56e41
 	vim.api.nvim_create_user_command("Format", function()
 		vim.lsp.buf.format()
 	end, {})
@@ -85,10 +82,5 @@ require("mason-lspconfig").setup_handlers {
 				}
 			}
 		}
-<<<<<<< HEAD
 	end,
-=======
-	end
-
->>>>>>> 0632b07a7895a1b183208553e6537778f4d56e41
 }
