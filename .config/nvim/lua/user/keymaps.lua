@@ -33,7 +33,7 @@ vim.g.maplocalleader = " "
 
 -- keymap("n", "<c-m>", "<c-w>|", opts) -- expand current split
 
-keymap("n", "<c-n>", ":Lex 20<cr>", opts) -- netrw
+keymap("n", "<c-n>", ":NvimTreeToggle<CR>", opts)
 
 -- Resize with c-arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)

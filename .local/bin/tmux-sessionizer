@@ -24,4 +24,4 @@ fi
 
 tmux switch-client -t $selected_name
 tmux send-keys -t $selected_name vifm ' ' $selected Enter
-tmux neww -t $selected_name nvim ' .' Enter
+tmux neww -c $selected -t $selected_name nvim .

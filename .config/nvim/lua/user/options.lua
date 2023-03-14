@@ -1,39 +1,36 @@
 local options = {
-	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-	cmdheight = 1, -- more space in the neovim command line for displaying messages
+	clipboard = "unnamedplus",            -- allows neovim to access the system clipboard
+	cmdheight = 1,                        -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-	conceallevel = 0, -- so that `` is visible in markdown files
-	fileencoding = "utf-8", -- the encoding written to a file
-	hlsearch = false, -- highlight all matches on previous search pattern
-	ignorecase = true, -- ignore case in search patterns
-	mouse = "a", -- allow the mouse to be used in neovim
-	pumheight = 10, -- pop up menu height
-	showmode = false, -- we don't need to see things like -- INSERT -- anymore
-	showtabline = 1, -- always show tabs
-	smartcase = true, -- smart case
-	smartindent = true, -- make indenting smarter again
-
-	splitbelow = true, -- force all horizontal splits to go below current window
-	splitright = true, -- force all vertical splits to go to the right of current window
-
-	termguicolors = true, -- set term gui colors (most terminals support this)
-	timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
-	backup = false, -- creates a backup file
-	swapfile = false, -- creates a swapfile
-	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-
+	conceallevel = 0,                     -- so that `` is visible in markdown files
+	fileencoding = "utf-8",               -- the encoding written to a file
+	hlsearch = false,                     -- highlight all matches on previous search pattern
+	ignorecase = true,                    -- ignore case in search patterns
+	mouse = "a",                          -- allow the mouse to be used in neovim
+	pumheight = 10,                       -- pop up menu height
+	showmode = false,                     -- we don't need to see things like -- INSERT -- anymore
+	showtabline = 1,                      -- always show tabs
+	smartcase = true,                     -- smart case
+	smartindent = true,                   -- make indenting smarter again
+	splitbelow = true,                    -- force all horizontal splits to go below current window
+	splitright = true,                    -- force all vertical splits to go to the right of current window
+	termguicolors = true,                 -- set term gui colors (most terminals support this)
+	timeoutlen = 1000,                    -- time to wait for a mapped sequence to complete (in milliseconds)
+	backup = false,                       -- creates a backup file
+	swapfile = false,                     -- creates a swapfile
+	writebackup = false,                  -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	undodir = os.getenv("HOME") .. "/.vim/undodir",
-	undofile = true, -- enable persistent undo
-	updatetime = 300, -- faster completion (4000ms default)
+	undofile = true,                      -- enable persistent undo
+	updatetime = 300,                     -- faster completion (4000ms default)
 	-- expandtab = true,                        -- convert tabs to spaces
-	shiftwidth = 4, -- the number of spaces inserted for each indentation
-	tabstop = 4, -- insert 4 spaces for a tab
-	cursorline = true, -- highlight the current line
-	number = true, -- set numbered lines
-	relativenumber = true, -- set relative numbered lines
+	shiftwidth = 4,                       -- the number of spaces inserted for each indentation
+	tabstop = 4,                          -- insert 4 spaces for a tab
+	cursorline = true,                    -- highlight the current line
+	number = true,                        -- set numbered lines
+	relativenumber = true,                -- set relative numbered lines
 	numberwidth = 1,
-	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-	wrap = false, -- display lines as one long line
+	signcolumn = "yes",                   -- always show the sign column, otherwise it would shift the text each time
+	wrap = false,                         -- display lines as one long line
 	scrolloff = 8,
 	sidescrolloff = 8,
 	incsearch = true, -- incremental search
@@ -64,9 +61,9 @@ hi! link Bold GruvboxAquaBold
 
 vim.cmd [[
 
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-let g:netrw_keepdir=0
+" let g:netrw_banner=0
+" let g:netrw_liststyle=3
+" let g:netrw_keepdir=0
 
 augroup vimrc_c
     au FileType c nnoremap <leader>x :!gcc % && ./a.out <CR>
@@ -147,10 +144,10 @@ let g:git_messenger_no_default_mappings = v:true
 ]]
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-	group= vim.api.nvim_create_augroup('yank_highlight', {}),
-	pattern='*',
-	callback = function ()
-		vim.highlight.on_yank({ higroup='IncSearch', timeout = 200 })
+	group = vim.api.nvim_create_augroup('yank_highlight', {}),
+	pattern = '*',
+	callback = function()
+		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
 	end
 })
 
@@ -165,5 +162,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- ]])
 
 vim.api.nvim_create_user_command("Clear", function()
-	for _, win in ipairs(vim.api.nvim_list_wins()) do local config = vim.api.nvim_win_get_config(win); if config.relative ~= "" then vim.api.nvim_win_close(win, false) end end
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local config = vim.api.nvim_win_get_config(win);
+		if config.relative ~= "" then vim.api.nvim_win_close(win, false) end
+	end
 end, {})
