@@ -24,26 +24,43 @@ vim.api.nvim_set_keymap("n", "<leader>dl", "<cmd>lua require('dap').step_into()<
 --- LLDB, RUST y C ---
 -- paquete en arch: codelldb
 dap.adapters.lldb = {
-  type = 'executable',
-  command = '/usr/bin/lldb-vscode',
-  name = 'lldb'
+	type = 'executable',
+	command = '/usr/bin/lldb-vscode',
+	-- command = vim.fn.getenv('HOME') .. '/.local/share/nvim/mason/packages/codelldb/codelldb',
+	name = 'lldb'
 }
 
 dap.configurations.rust = {
-  {
-    name = 'Launch',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
-  },
+	{
+		name = 'Launch',
+		type = 'lldb',
+		request = 'launch',
+		program = function()
+			vim.cmd("!cargo build")
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopOnEntry = false,
+		args = {},
+	},
 }
-dap.configurations.c = dap.configurations.rust
-dap.configurations.cpp = dap.configurations.rust
+
+dap.configurations.c = {
+	{
+		name = 'Launch',
+		type = 'lldb',
+		request = 'launch',
+		program = function()
+			return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+		end,
+		cwd = '${workspaceFolder}',
+		stopOnEntry = false,
+		args = {},
+	},
+}
+
+dap.configurations.cpp = dap.configurations.c
+
 
 --- PYTHON ---
 
@@ -53,32 +70,31 @@ dap.configurations.cpp = dap.configurations.rust
 -- debugpy/bin/python -m pip install debugpy
 
 dap.adapters.python = {
-  type = 'executable';
-  command =  vim.fn.getenv('HOME') .. '/.virtualenvs/debugpy/bin/python3';
-  args = { '-m', 'debugpy.adapter' };
+	type = 'executable',
+	command = vim.fn.getenv('HOME') .. '/.virtualenvs/debugpy/bin/python3',
+	args = { '-m', 'debugpy.adapter' },
 }
 
 dap.configurations.python = {
-  {
-    -- The first three options are required by nvim-dap
-    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-    request = 'launch';
-    name = "Launch file";
-
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-    program = "${file}"; -- This configuration will launch the current file if used.
-    pythonPath = function()
-      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-      local cwd = vim.fn.getcwd()
-      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-        return cwd .. '/venv/bin/python'
-      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-        return cwd .. '/.venv/bin/python'
-      else
-        return '/usr/bin/python'
-      end
-    end;
-  },
+	{
+		-- The first three options are required by nvim-dap
+		type = 'python', -- the type here established the link to the adapter definition: `dap.adapters.python`
+		request = 'launch',
+		name = "Launch file",
+		-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+		program = "${file}", -- This configuration will launch the current file if used.
+		pythonPath = function()
+			-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+			-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+			-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+			local cwd = vim.fn.getcwd()
+			if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
+				return cwd .. '/venv/bin/python'
+			elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
+				return cwd .. '/.venv/bin/python'
+			else
+				return '/usr/bin/python'
+			end
+		end,
+	},
 }
