@@ -58,4 +58,6 @@ vim.api.nvim_set_hl(0, "GruvboxRedSign", {ctermfg=167, ctermbg="none", fg="#fb49
 vim.api.nvim_set_hl(0, "GruvboxAquaSign", {ctermfg=108, ctermbg="none", fg="#8ec07c"})
 vim.api.nvim_set_hl(0, "GruvboxBlueSign", {ctermfg=109, ctermbg="none", fg="#83a598"})
 
+vim.api.nvim_set_hl(0, "Visual", {ctermfg=50, ctermbg=241, bg="#665c54"}) -- Porque me canse del reverse de gruvbox
+
 transparent('gruvbox')

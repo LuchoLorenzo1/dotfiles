@@ -134,13 +134,29 @@ return packer.startup(function(use)
 	-- 	}
 	-- }
 
-	use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 	use 'simrat39/rust-tools.nvim'
 
 	use 'nvim-tree/nvim-tree.lua'
 	use 'nvim-tree/nvim-web-devicons'
 
+	use {
+		"SmiteshP/nvim-navbuddy",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+			"numToStr/Comment.nvim", -- Optional
+			"nvim-telescope/telescope.nvim" -- Optional
+		}
+	}
+
+
+	-- use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
+
+	use 'jose-elias-alvarez/null-ls.nvim'
 end)

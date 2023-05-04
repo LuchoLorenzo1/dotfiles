@@ -106,6 +106,9 @@ telescope.setup {
 	pickers = {
 		live_grep = {
 			theme = "dropdown",
+		},
+		man_pages = {
+			sections = { "1", "2", "3" },
 		}
 	},
 	extensions = {

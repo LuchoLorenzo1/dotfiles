@@ -24,10 +24,8 @@ cmp.setup {
 		["<c-y>"] = cmp.mapping.confirm { select = true },
 		["<C-j>"] = cmp.mapping(function(fallback)
 			if luasnip.expand_or_jumpable() then
-				print("lol")
 				luasnip.expand_or_jump()
 			else
-				print("no")
 				fallback()
 			end
 		end, { "i", "s" }),
@@ -56,6 +54,7 @@ cmp.setup {
 		end,
 	},
 	sources = {
+		{ name = "cmp_tabnine" },
 		{ name = "nvim_lsp" },
 		{ name = "luasnip", keyword_length = 2 },
 		{ name = "buffer", keyword_length = 5 },
@@ -74,3 +73,18 @@ cmp.setup {
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+
+-- local tabnine = require('cmp_tabnine.config')
+-- tabnine:setup({
+-- 	max_lines = 1000,
+-- 	max_num_results = 20,
+-- 	sort = true,
+-- 	run_on_every_keystroke = true,
+-- 	snippet_placeholder = '..',
+-- 	ignored_file_types = {
+-- 		-- default is not to ignore
+-- 		-- uncomment to ignore in lua:
+-- 		-- lua = true
+-- 	},
+-- 	show_prediction_strength = false
+-- })

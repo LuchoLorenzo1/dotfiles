@@ -87,4 +87,4 @@ keymap("n", "<leader>c", ":ccl<CR>", opts1)
 -- keymap("n", "<Tab>", "/[[<CR>", opts1)
 
 keymap("n", "<leader>hm", ":GitMessenger<CR>", opts1)
-keymap("n", "<leader>gf", ":e <cfile><CR>", opts1)
+keymap("n", "gF", ":e <cfile><CR>", opts1)
