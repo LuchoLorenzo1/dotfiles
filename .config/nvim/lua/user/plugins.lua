@@ -135,7 +135,7 @@ return packer.startup(function(use)
 	-- }
 
 	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-	use 'simrat39/rust-tools.nvim'
+	-- use 'simrat39/rust-tools.nvim'
 
 	use 'nvim-tree/nvim-tree.lua'
 	use 'nvim-tree/nvim-web-devicons'

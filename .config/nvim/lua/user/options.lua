@@ -38,7 +38,7 @@ local options = {
 	laststatus = 0,
 	nuw = 1,
 	linespace = 0,
-	spelllang = "es",
+	spelllang = "en",
 }
 
 
