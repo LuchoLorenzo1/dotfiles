@@ -69,7 +69,6 @@ keymap("n", "[t", ":tabprev<CR>", opts)
 keymap("v", "<", "<gv", opts1) -- comentado por muchos bugs
 keymap("v", ">", ">gv", opts1)
 
-
 keymap("i", "<C-d>", "<Del>", opts1)
 keymap("n", "<leader>T", ":vsp <cr>:let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>icd $VIM_DIR<CR>", opts1)
 
@@ -80,11 +79,10 @@ keymap("n", "<leader>O", "O<Esc>", opts1)
 -- QUICKFIX LISTS --
 keymap("n", "<leader>k", ":cp<CR>", opts1)
 keymap("n", "<leader>j", ":cn<CR>", opts1)
-
 keymap("n", "<leader>c", ":ccl<CR>", opts1)
 
 -- VIMWIKI --
 -- keymap("n", "<Tab>", "/[[<CR>", opts1)
 
-keymap("n", "<leader>hm", ":GitMessenger<CR>", opts1)
+-- keymap("n", "<leader>hm", ":GitMessenger<CR>", opts1)
 keymap("n", "gF", ":e <cfile><CR>", opts1)

@@ -78,7 +78,7 @@ return packer.startup(function(use)
 	use "ray-x/lsp_signature.nvim"
 	use "williamboman/mason.nvim"
 	use "williamboman/mason-lspconfig.nvim"
-	-- use "jose-elias-alvarez/null-ls.nvim"
+	use "jose-elias-alvarez/null-ls.nvim"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
@@ -123,8 +123,8 @@ return packer.startup(function(use)
 
 	use "ThePrimeagen/harpoon"
 
-	use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
-	use { 'rhysd/git-messenger.vim' }
+	-- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
+
 
 	-- use {
 	-- 	"ThePrimeagen/refactoring.nvim",
@@ -151,12 +151,9 @@ return packer.startup(function(use)
 		}
 	}
 
-
-	-- use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+	-- use { 'rhysd/git-messenger.vim' } --- lo saco porq gitsigns trae uno
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
-
-	use 'jose-elias-alvarez/null-ls.nvim'
 end)
