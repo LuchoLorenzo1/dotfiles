@@ -54,7 +54,7 @@ keymap("n", "N", "Nzzzv", opts)
 keymap("x", "<leader>p", "\"_dP", opts)
 
 -- yank paragraph and stay in the same place
-keymap("n", "yip", "m`yip``", {silent=true, noremap=true})
+keymap("n", "yip", "m`yip``", { silent = true, noremap = true })
 
 --buffer navigation
 keymap("n", "]b", ":bnext<CR>", opts)

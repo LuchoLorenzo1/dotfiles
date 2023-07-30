@@ -37,7 +37,7 @@ keys = [
         ([mod], "a", lazy.hide_show_bar("top"), lazy.hide_show_bar("bottom")),
         # ------------ App Configs ------------
         ([mod], "Return", lazy.spawn("alacritty")),
-        ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("firefox")),
+        ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
         (
             [mod],
             "f",
@@ -45,32 +45,33 @@ keys = [
             lazy.spawn("alacritty --command vifmrun"),
         ),
         ([mod], "p", lazy.group["0"].toscreen(), lazy.spawn("discord")),
-        ([mod], "s", lazy.group["0"].toscreen(), lazy.spawn("spotify")),
+        ([mod], "s", lazy.group["0"].toscreen(), lazy.spawn("spotify-launcher")),
         ([mod, "shift"], "s", lazy.spawn("flameshot gui")),
+
         # ------------ Hardware Configs ------------
         (
-            [mod],
-            "F6",
+            [],
+            "XF86AudioPrev",
             lazy.spawn(
                 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
             ),
         ),
         (
-            [mod],
-            "F7",
+            [],
+            "XF86AudioPlay",
             lazy.spawn(
                 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
             ),
         ),
         (
-            [mod],
-            "F8",
+            [],
+            "XF86AudioNext",
             lazy.spawn(
                 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
             ),
         ),
-        ([mod], "F9", lazy.spawn("pactl set-sink-mute 0 toggle")),
-        ([mod], "F10", lazy.spawn("pactl set-sink-volume 0 -5%")),
-        ([mod], "F11", lazy.spawn("pactl set-sink-volume 0 +5%")),
+        ([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
+        ([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -2%")),
+        ([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +2%")),
     ]
 ]

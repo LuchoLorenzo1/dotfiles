@@ -1,4 +1,3 @@
 #!/bin/sh
-export wp=$(ls $HOME/Desktop/wallpapers/ciudades | shuf -n 1)
-feh --bg-scale $HOME/Desktop/wallpapers/ciudades/${wp}
-
+export wp=$(ls $HOME/Desktop/wallpapers | shuf -n 1)
+feh --bg-scale $HOME/Desktop/wallpapers/${wp}

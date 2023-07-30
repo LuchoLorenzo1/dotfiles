@@ -38,7 +38,7 @@ font:
   size: 14
 
 window:
-  opacity: 1
+  opacity: 0.9
   # Window dimensions in character columns and lines
   # (changes require restart)
 

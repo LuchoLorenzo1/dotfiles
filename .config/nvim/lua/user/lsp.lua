@@ -108,7 +108,7 @@ require("mason-lspconfig").setup_handlers {
 		}
 	end,
 
-	["css_ls"] = function()
+	["cssls"] = function()
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		require('lspconfig').cssls.setup {

@@ -1,10 +1,10 @@
 " vim: filetype=vifm :
 
 source $VIFM/favicons.vifm
-" source $VIFM/colors/onedark.vifm
+source $VIFM/colors/onedark.vifm
 " source $VIFM/colors/tema1.vifm
 " source $VIFM/colors/dracula.vifm
-source $VIFM/colors/iceberg.vifm
+" source $VIFM/colors/iceberg.vifm
 
 command firefox firefox
 filetype *.pdf firefox
@@ -89,7 +89,7 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme default
+" colorscheme default
 
 " zenburn like color scheme for vifm
 " http://kippura.org/zenburnpage/
