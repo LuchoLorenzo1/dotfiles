@@ -36,6 +36,7 @@ keys = [
         ([mod], "t", lazy.spawn("rofi -combi-modi window,drun,ssh -show combi -show-icons")),
         ([mod], "a", lazy.hide_show_bar("top"), lazy.hide_show_bar("bottom")),
         # ------------ App Configs ------------
+        ([mod], "e", lazy.cmd_spawn('(setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap es || setxkbmap us')),
         ([mod], "Return", lazy.spawn("alacritty")),
         ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
         (
@@ -44,8 +45,8 @@ keys = [
             lazy.group["6"].toscreen(),
             lazy.spawn("alacritty --command vifmrun"),
         ),
-        ([mod], "p", lazy.group["0"].toscreen(), lazy.spawn("discord")),
-        ([mod], "s", lazy.group["0"].toscreen(), lazy.spawn("spotify-launcher")),
+        # ([mod], "p", lazy.group["0"].toscreen(), lazy.spawn("discord")),
+        # ([mod], "s", lazy.group["0"].toscreen(), lazy.spawn("spotify-launcher")),
         ([mod, "shift"], "s", lazy.spawn("flameshot gui")),
 
         # ------------ Hardware Configs ------------

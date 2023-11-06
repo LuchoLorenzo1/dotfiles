@@ -90,7 +90,7 @@ return packer.startup(function(use)
 	}
 	use "nvim-treesitter/playground"
 	use "nvim-treesitter/nvim-treesitter-textobjects"
-	use "p00f/nvim-ts-rainbow"
+	-- use "p00f/nvim-ts-rainbow"
 	use {
 		"windwp/nvim-autopairs",
 		config = function()

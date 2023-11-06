@@ -37,7 +37,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 export LC_CTYPE="ja_JP.UTF-8"
 
-export LD_LIBRARY_PATH=/usr/lib/
+# export LD_LIBRARY_PATH=/usr/lib/
 
 wallpaper &
 setxkbmap -option caps:escape &
