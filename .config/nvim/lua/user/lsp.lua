@@ -1,7 +1,7 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "tsserver" },
+	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "tsserver", "eslint", "cssls" },
 }
 
 local opts = { noremap = true, silent = true }
@@ -22,7 +22,7 @@ local lsp_keymaps = function(bufnr)
 	vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 
-	-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
 	-- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 	-- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)

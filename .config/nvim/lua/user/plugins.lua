@@ -58,7 +58,7 @@ return packer.startup(function(use)
 	--   requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
 	-- }
 
-	-- use "github/copilot.vim"
+	use "github/copilot.vim"
 
 	-- cmp plugins
 	use "hrsh7th/nvim-cmp"
@@ -78,7 +78,7 @@ return packer.startup(function(use)
 	use "ray-x/lsp_signature.nvim"
 	use "williamboman/mason.nvim"
 	use "williamboman/mason-lspconfig.nvim"
-	use "jose-elias-alvarez/null-ls.nvim"
+	use "nvimtools/none-ls.nvim"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"

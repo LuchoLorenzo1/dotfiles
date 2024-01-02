@@ -50,3 +50,5 @@ picom &
 # fcitx -d &
 
 exec qtile start
+
+

@@ -31,7 +31,7 @@
 		  "}"
 		],
 		"description": "Interface Definition"
-	},	
+	},
 	"Public Method Definition": {
 		"prefix": "public method",
 		"body": [
@@ -54,7 +54,7 @@
 		"description": "Private Method Definition"
 	},
 	"Import external module.": {
-		"prefix": "import statement",
+		"prefix": "import",
 		"body": [
 			"import { $0 } from \"${1:module}\";"
 		],

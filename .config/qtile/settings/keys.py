@@ -36,7 +36,7 @@ keys = [
         ([mod], "t", lazy.spawn("rofi -combi-modi window,drun,ssh -show combi -show-icons")),
         ([mod], "a", lazy.hide_show_bar("top"), lazy.hide_show_bar("bottom")),
         # ------------ App Configs ------------
-        ([mod], "e", lazy.cmd_spawn('(setxkbmap -query | grep -q "layout:\s\+us") && setxkbmap es || setxkbmap us')),
+        ([mod], "e", lazy.spawn('toggle_lang')),
         ([mod], "Return", lazy.spawn("alacritty")),
         ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
         (
