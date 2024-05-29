@@ -41,7 +41,6 @@ local options = {
 	spelllang = "en",
 }
 
-
 vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
@@ -79,7 +78,6 @@ augroup vimrc_javascript
     au FileType javascript set shiftwidth=2
 augroup END
 
-
 " VimWiki
 let g:vimwiki_list = [{
   \ 'path': '$HOME/vimwiki/vimwiki',
@@ -98,6 +96,7 @@ augroup vimrc_vimwiki
     au FileType vimwiki inoremap ]u ú
     au FileType vimwiki inoremap ]A Á
     au FileType vimwiki inoremap ]n ñ
+	au filetype vimwiki silent! iunmap <buffer> <Tab>
 augroup END
 
 " set statusline=
@@ -116,7 +115,7 @@ augroup END
 " set statusline+=\ %l:%c
 " hi User1 guifg=#ffffff guibg=NONE gui=bold
 
-inoremap <expr> <Tab> search('\%#[]>())}''"`]', 'n') ? '<Right>' : '<Tab>'
+" inoremap <expr> <Tab> search('\%#[]>())}''"`]', 'n') ? '<Right>' : '<Tab>'
 
 
 " resize window when vim is resized
@@ -128,11 +127,11 @@ autocmd BufWritePre * %s/\s\+$//e
 " set foldmethod=manual
 " set foldexpr=nvim_treesitter#foldexpr()
 
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave ?* mkview 1
+  autocmd BufWinEnter ?* silent! loadview 1
+augroup END
 
 au FileType * set fo-=c fo-=r fo-=o
 
@@ -141,6 +140,7 @@ source $HOME/.local/share/nvim/site/pack/packer/start/vim-sandwich/macros/sandwi
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 let g:git_messenger_no_default_mappings = v:true
+let g:vimwiki_table_mappings = 0
 ]]
 
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -148,6 +148,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 	callback = function()
 		vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
+	end
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+	group = vim.api.nvim_create_augroup('nginx-conf', {}),
+	pattern = '*.conf',
+	callback = function()
+		vim.cmd("silent !docker exec $(docker ps -aqf 'name=nginx-playground') nginx -s reload")
 	end
 })
 
@@ -167,3 +175,16 @@ vim.api.nvim_create_user_command("Clear", function()
 		if config.relative ~= "" then vim.api.nvim_win_close(win, false) end
 	end
 end, {})
+
+local copilot_on = true;
+vim.api.nvim_create_user_command('CopilotToggle', function ()
+	if copilot_on then
+		vim.cmd('Copilot disable')
+		print("Copilot OFF")
+	else
+		vim.cmd('Copilot enable')
+		print("Copilot ON")
+	end
+	copilot_on = not copilot_on
+end, {nargs = 0})
+vim.keymap.set('', '<leader>sc', ':CopilotToggle<CR>', { noremap = true, silent = true })

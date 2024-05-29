@@ -30,12 +30,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
 
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
-export LC_CTYPE="ja_JP.UTF-8"
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XMODIFIERS="@im=fcitx"
+# export LC_CTYPE="ja_JP.UTF-8"
 
 # export LD_LIBRARY_PATH=/usr/lib/
 
@@ -50,5 +50,3 @@ picom &
 # fcitx -d &
 
 exec qtile start
-
-

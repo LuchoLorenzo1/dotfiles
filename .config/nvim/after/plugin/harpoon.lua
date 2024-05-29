@@ -24,7 +24,8 @@ local ui = require('harpoon.ui')
 
 vim.keymap.set("n", "<M-m>", mark.add_file)
 vim.keymap.set("n", "<M-n>", ui.toggle_quick_menu)
--- vim.keymap.set("n", "<M-t>", function () tmux.gotoTerminal(0) end)
+-- vim.keymap.set("n", "<M-t>", function () tmux.gotoTerminal(1) end)
+
 
 vim.keymap.set("n", "<M-a>", function () ui.nav_file(1) end)
 vim.keymap.set("n", "<M-s>", function () ui.nav_file(2) end)

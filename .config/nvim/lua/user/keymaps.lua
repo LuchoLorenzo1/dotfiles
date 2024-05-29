@@ -70,7 +70,7 @@ keymap("v", "<", "<gv", opts1) -- comentado por muchos bugs
 keymap("v", ">", ">gv", opts1)
 
 keymap("i", "<C-d>", "<Del>", opts1)
-keymap("n", "<leader>T", ":vsp <cr>:let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>icd $VIM_DIR<CR>", opts1)
+-- keymap("n", "<leader>T", ":vsp <cr>:let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>icd $VIM_DIR<CR>", opts1)
 
 keymap("n", "<leader>o", "o<Esc>", opts1)
 keymap("n", "<leader>O", "O<Esc>", opts1)
@@ -86,3 +86,6 @@ keymap("n", "<leader>c", ":ccl<CR>", opts1)
 
 -- keymap("n", "<leader>hm", ":GitMessenger<CR>", opts1)
 keymap("n", "gF", ":e <cfile><CR>", opts1)
+
+
+keymap("n", "<leader>x", ":!chmod +x %<CR><Esc>", opts1)

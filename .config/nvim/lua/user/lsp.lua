@@ -1,7 +1,7 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "tsserver", "eslint", "cssls" },
+	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "tsserver", "eslint", "cssls", "tailwindcss", "html", "htmx", "gopls", "graphql", "clangd", "bashls" },
 }
 
 local opts = { noremap = true, silent = true }
@@ -114,6 +114,13 @@ require("mason-lspconfig").setup_handlers {
 		require('lspconfig').cssls.setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
+		}
+	end,
+
+	["clangd"] = function()
+		require('lspconfig').clangd.setup {
+			on_attach = on_attach,
+			cmd = { "clangd", "--offset-encoding=utf-16" },
 		}
 	end,
 }

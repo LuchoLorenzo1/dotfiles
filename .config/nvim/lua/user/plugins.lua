@@ -46,7 +46,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes"
-	use "lunarvim/darkplus.nvim"
+	-- use "lunarvim/darkplus.nvim"
 	use "gruvbox-community/gruvbox"
 	-- use "navarasu/onedark.nvim"
 	-- use "ayu-theme/ayu-vim"
@@ -78,7 +78,7 @@ return packer.startup(function(use)
 	use "ray-x/lsp_signature.nvim"
 	use "williamboman/mason.nvim"
 	use "williamboman/mason-lspconfig.nvim"
-	use "nvimtools/none-ls.nvim"
+	-- use "nvimtools/none-ls.nvim"
 
 	-- Telescope
 	use "nvim-telescope/telescope.nvim"
@@ -125,7 +125,6 @@ return packer.startup(function(use)
 
 	-- use { 'dccsillag/magma-nvim', run = ':UpdateRemotePlugins' }
 
-
 	-- use {
 	-- 	"ThePrimeagen/refactoring.nvim",
 	-- 	requires = {
@@ -134,7 +133,7 @@ return packer.startup(function(use)
 	-- 	}
 	-- }
 
-	use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+	-- use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 	-- use 'simrat39/rust-tools.nvim'
 
 	use 'nvim-tree/nvim-tree.lua'

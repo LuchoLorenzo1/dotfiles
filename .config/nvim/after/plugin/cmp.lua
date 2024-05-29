@@ -89,9 +89,9 @@ cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = 
 -- })
 
  --Enable (broadcasting) snippet capability for completion
- local capabilities = vim.lsp.protocol.make_client_capabilities()
- capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
- require'lspconfig'.cssls.setup {
-   capabilities = capabilities,
- }
+require'lspconfig'.cssls.setup {
+capabilities = capabilities,
+}
