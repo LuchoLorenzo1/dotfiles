@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [[ $1 ]]; then
-	python3 -i ~/.local/share/read_csv.py $1
-else
-	python3 -i ~/.local/share/calc.py
-fi
-

@@ -19,7 +19,7 @@ fi
 clear
 echo -e "${yellowColor}\n ENTER para empezar instalando lo mas importante: (git xorg xorg-xinit base-devel) \n${endColor}"
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
-	sudo sed 's/^#ParallelDownloads.*/ParallelDownloads = 15/' /etc/pacman.conf -i
+	sudo sed 's/^#ParallelDownloads.*/ParallelDownloads = 20/' /etc/pacman.conf -i
 
 	pacman --noconfirm -S git xorg xorg-xinit base-devel
 
@@ -75,7 +75,11 @@ fi
 echo -e "${yellowColor}Instalar paquetes esenciales? [Y/n]${endColor}"; read response
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	pacman --noconfirm -S pulseaudio pavucontrol vifm chromium tmux rofi lsd bat starship alacritty fzf feh redshift picom ttf-cascadia-code ttf-nerd-fonts-symbols
+
+sudo -u lucho bash <<EOF
 	yay -S dragon-drop caido caido-cli
+EOF
+
 	pacman --noconfirm -S docker docker-compose
 	usermod -aG docker lucho
 	systemctl enable docker

@@ -1,0 +1,5 @@
+#!/bin/bash
+LOGFILE="$HOME/Desktop/ip_log.txt"
+CURRENT_IP=$(curl -s ifconfig.me)
+
+echo "$(date): $CURRENT_IP" >> $LOGFILE
