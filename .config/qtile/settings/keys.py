@@ -1,5 +1,5 @@
 from libqtile.config import Key
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 lazy.hide_show_bar("bottom")
 mod = "mod4"

@@ -59,6 +59,7 @@ hi! link Bold GruvboxAquaBold
 ]]
 
 vim.cmd [[
+" let g:copilot_proxy = 'http://localhost:8080'
 
 " let g:netrw_banner=0
 " let g:netrw_liststyle=3
