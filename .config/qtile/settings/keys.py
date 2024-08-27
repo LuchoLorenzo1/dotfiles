@@ -22,31 +22,42 @@ keys = [
         ([mod, "shift"], "j", lazy.layout.shuffle_down()),
         ([mod, "shift"], "k", lazy.layout.shuffle_up()),
         # Toggle between different layouts as defined below
+        ([mod], "m", lazy.next_layout()),
         ([mod], "Tab", lazy.next_layout()),
         ([mod, "shift"], "Tab", lazy.prev_layout()),
         # Kill window
         ([mod], "BackSpace", lazy.window.kill()),
+
+
         # Switch focus of monitors
         # ([mod], "period", lazy.next_screen()),
         # ([mod], "comma", lazy.prev_screen()),
         # Restart Qtile
+
         ([mod, "control"], "r", lazy.restart()),
         ([mod, "control"], "q", lazy.shutdown()),
 
         ([mod], "t", lazy.spawn("rofi -combi-modi window,drun,ssh -show combi -show-icons")),
+        ([mod], "v", lazy.spawn("toggle_output")),
+
         ([mod], "a", lazy.hide_show_bar("top"), lazy.hide_show_bar("bottom")),
         # ------------ App Configs ------------
-        ([mod], "e", lazy.spawn('toggle_lang')),
+
+        # ([mod], "e", lazy.spawn('toggle_lang')),
+        ([mod], "e", lazy.widget["keyboardlayout"].next_keyboard()),
+
         ([mod], "Return", lazy.spawn("alacritty")),
-        ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
+
         (
             [mod],
             "f",
             lazy.group["6"].toscreen(),
             lazy.spawn("alacritty --command vifmrun"),
         ),
+        # ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
         # ([mod], "p", lazy.group["0"].toscreen(), lazy.spawn("discord")),
         # ([mod], "s", lazy.group["0"].toscreen(), lazy.spawn("spotify-launcher")),
+
         ([mod, "shift"], "s", lazy.spawn("flameshot gui")),
 
         # ------------ Hardware Configs ------------

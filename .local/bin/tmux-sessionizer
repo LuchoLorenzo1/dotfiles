@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+directories_file="$HOME/.local/share/sessionizer-folders"
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find  ~/workspace ~/workspace/probando ~/workspace/bbounty mindepth 1 -maxdepth 1 -type d | fzf)
+	expanded_dirs=$(sed "s|^~|$HOME|" "$directories_file")
+	selected=$(echo "$expanded_dirs" | xargs -I {} find {} -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

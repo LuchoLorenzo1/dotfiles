@@ -26,7 +26,7 @@ if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	pacman --noconfirm -Sy git xorg xorg-xinit base-devel
 
 	git config --global credential.helper store
-	git config --global user.email "lucianoalorenzo1@gmail.com"
+	git config --global user.email "LuchoLorenzo1@users.noreply.github.com"
 	git config --global user.name "Luciano Lorenzo"
 	git config --global init.defaultBranch main
 fi
@@ -92,13 +92,4 @@ fi
 echo -e "${yellowColor}Instalar paquetes NO TAN esenciales? [Y/n]${endColor}"; read response
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	pacman --noconfirm -S flameshot discord pinta ueberzug unzip poppler ripgrep fd zip vlc tinyxxd
-fi
-
-echo -e "${yellowColor}Instalar paquetes de data science? [Y/n]${endColor}"; read response
-if [[ $response =~ [yY] ]] || [ -z $response ]; then
-
-sudo -u lucho bash <<EOF
-	pip install --break-system-packages --no-input numpy pandas scipy matplotlib jupyter geopandas scikit-learn
-EOF
-
 fi

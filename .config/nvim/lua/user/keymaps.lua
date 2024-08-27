@@ -34,6 +34,7 @@ vim.g.maplocalleader = " "
 -- keymap("n", "<c-m>", "<c-w>|", opts) -- expand current split
 
 keymap("n", "<c-n>", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<c-n>", ":Lexplore 20<CR>", opts)
 
 -- Resize with c-arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -89,3 +90,5 @@ keymap("n", "gF", ":e <cfile><CR>", opts1)
 
 
 keymap("n", "<leader>x", ":!chmod +x %<CR><Esc>", opts1)
+
+keymap("n", "<leader>na", ":NodeAction<CR>", opts1)

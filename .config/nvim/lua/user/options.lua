@@ -125,8 +125,8 @@ augroup END
 " remove trailing spaces in all the file when saving
 autocmd BufWritePre * %s/\s\+$//e
 
-" set foldmethod=manual
-" set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=manual
+set foldexpr=nvim_treesitter#foldexpr()
 
 augroup AutoSaveFolds
   autocmd!

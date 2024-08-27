@@ -24,15 +24,16 @@ alias paste='xsel -o -b'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias body="awk 'p; /^\r/{p++}'"
-alias grep="rg"
+# alias grep="rg"
 
 alias night='redshift -l -34:-58 -t 5000:2000'
+alias cpu='sensors k10temp-pci-00c3'
 
 PS1='[\u@\h \W]\$ '
 
 BROWSER=chromium
 EDITOR=nvim
-export PATH=/home/lucho/.local/bin:/home/lucho/go/bin:$PATH
+export PATH=/home/lucho/.local/bin:$PATH:/home/lucho/.local/npm-global/bin:/home/lucho/go/bin
 
 # eval "`fnm env`"
 # eval "$(starship init bash)"

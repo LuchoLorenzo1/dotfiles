@@ -2,8 +2,8 @@ from libqtile.config import Key, Group
 from libqtile.lazy import lazy
 from .keys import mod, keys
 
-groups = [Group(i) for i in ("6", "7", "8", "9", "0")]
-ext_keys = ["y", "u", "i", "o", "p"]
+ext_keys = ["b", "y", "u", "i", "o", "p", "bracketleft", "bracketright", "backslash"]
+groups = [Group(i) for i in ("b", "y", "u", "i", "o", "p", "1", "2", "3")]
 
 for i, group in enumerate(groups):
     actual_key = str(i + 1)

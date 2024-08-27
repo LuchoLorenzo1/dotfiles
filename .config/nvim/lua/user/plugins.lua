@@ -150,6 +150,21 @@ return packer.startup(function(use)
 		}
 	}
 
+	use({
+		'ckolkey/ts-node-action',
+		 requires = { 'nvim-treesitter' },
+		 config = function()
+			 require("ts-node-action").setup({})
+		 end
+	})
+
+	use {
+		'CopilotC-Nvim/CopilotChat.nvim',
+		config = require("CopilotChat").setup {
+		  debug = true, -- Enable debugging
+		  -- See Configuration section for rest
+		}
+	}
 	-- use { 'rhysd/git-messenger.vim' } --- lo saco porq gitsigns trae uno
 
 	if PACKER_BOOTSTRAP then
