@@ -1,0 +1,10 @@
+configuration {
+    font: "Roboto Condensed 16";
+    location: 0;
+    opacity: 0.5;
+}
+
+// @theme "~/.config/rofi/themes/nord.rasi"
+// @theme "~/.config/rofi/themes/windows11-grid-dark.rasi"
+// @theme "~/.config/rofi/themes/launchpad.rasi"
+@theme "~/.config/rofi/themes/spotlight-dark.rasi"

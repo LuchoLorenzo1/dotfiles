@@ -1,0 +1,6 @@
+[Unit]
+Description=Log public IP address
+
+[Service]
+Type=oneshot
+ExecStart=/home/lucho/.local/bin/log_ip

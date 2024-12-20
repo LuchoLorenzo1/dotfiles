@@ -1,0 +1,109 @@
+{
+	"align": {
+		"prefix": ["align", "ali", "alig"],
+		"body": [
+			"{{$%align%",
+			"${0:${TM_SELECTED_TEXT}}",
+			"}}$"
+		],
+		"description": "aligned math formulae"
+	},
+	"K": {
+		"prefix": "K",
+		"body": [
+			"${1:A} \\in \\Bbb ${2:K}^{${3:n} \\times ${3}}"
+		],
+		"description": "K en conjunto"
+	},
+	"matrix": {
+		"prefix": "matrix",
+		"body": [
+			"{{$%align%",
+			"\\left[\\begin{matrix}",
+			"${1:0} & ${2:0} & ${3:0} \\\\\\",
+			"${4:0} & ${5:0} & ${6:0} \\\\\\",
+			"${7:0} & ${8:0} & ${9:0} \\\\\\",
+			"\\end{matrix}\\right]",
+			"}}$"
+		],
+		"description": "matrix"
+	},
+	"infmatrix": {
+		"prefix": "infmatrix",
+		"body": [
+			"{{$%align%",
+			"\\left[\\begin{matrix}",
+			"${1:0} & ${2:0} & \\ldots & ${3:0} \\\\\\",
+			"${4:0} & ${5:0} & \\ldots & ${6:0} \\\\\\",
+			"\\vdots & \\vdots & \\ddots & \\vdots \\\\\\",
+			"${7:0} & ${8:0} & \\ldots & ${9:0} \\\\\\",
+			"\\end{matrix}\\right]",
+			"}}$"
+		],
+		"description": "infinite matrix"
+	},
+	"cases": {
+		"prefix": "cases",
+		"body": [
+			"{{$",
+			"\\begin{cases}",
+			"${0}",
+			"\\end{cases}",
+			"}}$"
+		],
+		"description": "cases"
+	},
+	"vec": {
+		"prefix": "vec",
+		"body": "\\left[\\begin{matrix} ${1:i=1} \\\\\\ ${0:i=2}  \\\\\\ ${1:i=2} \\\\\\ \\end{matrix}\\right] ",
+		"description": "vector"
+	},
+	"bigcup": {
+		"prefix": [
+			"bigcup",
+			"bigu",
+			"U"
+		],
+		"body": "\\bigcup_{${0:i=1}}^{${1:n}}",
+		"description": "big cup"
+	},
+	"bigcap": {
+		"prefix": [
+			"bigcap",
+			"biga",
+			"A"
+		],
+		"body": "\\bigcap_{${0:i=1}}^{${1:n}}",
+		"description": "big cup"
+	},
+	"sum": {
+		"prefix": "sum",
+		"body": "\\sum{${0:i=1}}^{${1:n}}",
+		"description": "sumatoria"
+	},
+	"table": {
+		"prefix": "table",
+		"body": [
+			"{{$",
+			"\\begin{array}{c|lcr}",
+			"${1|\\text{indice},hola|} & \\text{${2:primero}} & \\text{${3:segundo}} & \\text{${4:tercero}} \\\\\\",
+			"\\hline \\\\\\",
+			"${5:0} & ${6:0} & ${7:0} & ${8:0} \\\\\\",
+			"${9:0} & ${10:0} & ${11:0} & ${12:0} \\\\\\",
+			"${13:0} & ${14:0} & ${15:0} & ${16:0} \\\\\\ ",
+			"\\end{array}",
+			"}}$"
+		],
+		"description": "sumatoria"
+	},
+	"img": {
+		"prefix": "img",
+		"body": "{{local:~/vimwiki/images/${1:nombre}}}",
+		"description": "imagen"
+	},
+	"derivative": {
+		"prefix": "dy",
+		"body": "\\frac{d${1:y}}{d${2:x}}",
+		"description": "imagen"
+	}
+}

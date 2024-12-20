@@ -1,0 +1,17 @@
+{
+  "subplots": {
+    "prefix": "subplots",
+    "body": "fig, ax = plt.subplots(nrows=${1:1}, ncols=${2:1}, figsize=(${3:10}, ${4:9}))",
+    "description": "subplots"
+  },
+  "tight layout": {
+    "prefix": "tightlayout",
+    "body": "plt.tight_layout()",
+    "description": "tight layout"
+  },
+  "to datetime": {
+    "prefix": "to datetime",
+    "body": "df['${1:date_column}'] = pd.to_datetime(df['${1}'])",
+    "description": "to datetime"
+  }
+}
