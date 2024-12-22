@@ -94,7 +94,3 @@ export PATH=/home/lucho/.local/bin:$PATH:/home/lucho/.local/npm-global/bin:/home
 
 eval "$(fzf --zsh)"
 . "$HOME/.cargo/env"
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
