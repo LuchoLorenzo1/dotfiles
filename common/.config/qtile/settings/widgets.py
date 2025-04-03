@@ -95,6 +95,20 @@ primary_widgets = [
     widget.Systray(background=colors["dark"], padding=5),
 ]
 
+secondary_widgets = [
+    *workspaces(),
+    separator(),
+    widget.Clock(format="%d/%m - %H:%M"),
+    separator(),
+]   
+
+tertiary_widgets = [
+    *workspaces(),
+    separator(),
+    widget.Clock(format="%d/%m - %H:%M"),
+    separator(),
+]   
+
 widget_defaults = {
     "font": "UbuntuMono Nerd Font Bold",
     "fontsize": 14,

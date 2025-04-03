@@ -28,7 +28,6 @@ keys = [
         # Kill window
         ([mod], "BackSpace", lazy.window.kill()),
 
-
         # Switch focus of monitors
         # ([mod], "period", lazy.next_screen()),
         # ([mod], "comma", lazy.prev_screen()),
@@ -48,12 +47,7 @@ keys = [
 
         ([mod], "Return", lazy.spawn("alacritty")),
 
-        (
-            [mod],
-            "f",
-            lazy.group["6"].toscreen(),
-            lazy.spawn("alacritty --command vifmrun"),
-        ),
+
         # ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
         # ([mod], "p", lazy.group["0"].toscreen(), lazy.spawn("discord")),
         # ([mod], "s", lazy.group["0"].toscreen(), lazy.spawn("spotify-launcher")),

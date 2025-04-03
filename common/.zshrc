@@ -76,6 +76,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias v="nvim"
+alias vim="nvim"
 alias vifm="vifmrun"
 alias cat='/bin/bat --theme OneHalfDark';
 alias la='lsd -la --group-dirs=first';
@@ -84,11 +85,12 @@ alias fonts='fc-list | fzf'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias paste='xsel -o -b'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias body="awk 'p; /^\r/{p++}'"
 alias night='redshift -l -34:-58 -t 5000:2000'
 alias cpu='sensors k10temp-pci-00c3'
 alias glog="git log --graph --decorate --all --pretty=format:'%C(auto)%h%d %C(#888888)(%an; %ar)%Creset %s'"
+alias monitors="xrandr --output DisplayPort-1 --primary --mode 1920x1080 --rate 240.00 --output DisplayPort-2 --mode 1920x1080 --rate 240.00 --right-of DisplayPort-1 --output DVI-D-0 --mode 1920x1080 --rate 144.00 --left-of DisplayPort-1"
+alias escape="setxkbmap -option caps:escape"
 
 export PATH=/home/lucho/.local/bin:$PATH:/home/lucho/.local/npm-global/bin:/home/lucho/go/bin
 
