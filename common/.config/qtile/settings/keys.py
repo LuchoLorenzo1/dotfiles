@@ -1,8 +1,36 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
+from libqtile import hook
+import subprocess
 
 lazy.hide_show_bar("bottom")
 mod = "mod4"
+
+protected_apps = ["chromium", "firefox", "postman", "wireshark", "spotify", "burpsuite"]
+
+@lazy.function
+def maybe_kill_protected(qtile):
+    win = qtile.current_window
+    if not win:
+        return
+
+    wm_class = win.get_wm_class()
+    if wm_class and any(app in [cls.lower() for cls in wm_class] for app in protected_apps):
+        try:
+            result = subprocess.run(
+                ['rofi', '-dmenu', '-p', f'Close {" / ".join(wm_class)}?'],
+                input='No\nYes\n',
+                capture_output=True,
+                text=True,
+                check=True
+            )
+            answer = result.stdout.strip().lower()
+            if answer == "yes":
+                win.kill()
+        except subprocess.CalledProcessError:
+            pass
+    else:
+        win.kill()
 
 keys = [
     Key(key[0], key[1], *key[2:])
@@ -25,8 +53,10 @@ keys = [
         ([mod], "m", lazy.next_layout()),
         ([mod], "Tab", lazy.next_layout()),
         ([mod, "shift"], "Tab", lazy.prev_layout()),
+
         # Kill window
-        ([mod], "BackSpace", lazy.window.kill()),
+        # ([mod], "BackSpace", lazy.window.kill()),
+        ([mod], "BackSpace", maybe_kill_protected),
 
         # Switch focus of monitors
         # ([mod], "period", lazy.next_screen()),
