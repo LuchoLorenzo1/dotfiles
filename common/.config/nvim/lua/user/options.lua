@@ -47,8 +47,7 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.api.nvim_create_user_command("Vimwiki2PDF", ":!pandoc -f vimwiki -t pdf % -o ~/vimwiki/pdf/<f-args>.pdf",
-	{ nargs = 1 })
+vim.api.nvim_create_user_command("Vimwiki2PDF", ":!pandoc -f vimwiki -t pdf % -o ~/vimwiki/pdf/<f-args>.pdf -V geometry:margin=1in", { nargs = 1 })
 vim.api.nvim_create_user_command("W", ":w", { nargs = 0 })
 vim.api.nvim_create_user_command("Q", ":q", { nargs = 0 })
 
@@ -80,25 +79,26 @@ augroup vimrc_javascript
 augroup END
 
 " VimWiki
-let g:vimwiki_list = [{
-  \ 'path': '$HOME/vimwiki/vimwiki',
-  \ 'template_path': '$HOME/vimwiki/vimwiki/templates',
-  \ 'template_default': 'default',
-  \ 'template_ext': '.html'}]
+" let g:vimwiki_list = [{
+"   \ 'path': '$HOME/vimwiki/vimwiki',
+"   \ 'template_path': '$HOME/vimwiki/vimwiki/templates',
+"   \ 'template_default': 'default',
+"   \ 'template_ext': '.html'}]
 
-augroup vimrc_vimwiki
-    au FileType vimwiki nnoremap <F4> :Vimwiki2HTMLBrowse <cr>
-    au FileType vimwiki nnoremap <leader> :Vimwiki2HTMLBrowse  <cr>
-    au FileType vimwiki nnoremap <leader>* m`0i* <Esc>``
-    au FileType vimwiki inoremap ]a á
-    au FileType vimwiki inoremap ]e é
-    au FileType vimwiki inoremap ]o ó
-    au FileType vimwiki inoremap ]i í
-    au FileType vimwiki inoremap ]u ú
-    au FileType vimwiki inoremap ]A Á
-    au FileType vimwiki inoremap ]n ñ
-	au filetype vimwiki silent! iunmap <buffer> <Tab>
-augroup END
+" augroup vimrc_vimwiki
+"     au FileType vimwiki nnoremap <F4> :Vimwiki2HTMLBrowse <cr>
+"     " au FileType vimwiki nnoremap <leader> :Vimwiki2HTMLBrowse  <cr>
+"     au FileType vimwiki nnoremap <leader>* m`0i* <Esc>``
+"     au FileType vimwiki inoremap ]a á
+"     au FileType vimwiki inoremap ]e é
+"     au FileType vimwiki inoremap ]o ó
+"     au FileType vimwiki inoremap ]i í
+"     au FileType vimwiki inoremap ]u ú
+"     au FileType vimwiki inoremap ]A Á
+"     au FileType vimwiki inoremap ]n ñ
+" 	au filetype vimwiki silent! iunmap <buffer> <Tab>
+" augroup END
+
 
 " set statusline=
 " set statusline=

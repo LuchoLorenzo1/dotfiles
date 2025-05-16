@@ -21,7 +21,6 @@ require("lazy").setup({
 	spec = {
 		{ "nvim-lua/popup.nvim" },
 		{ "nvim-lua/plenary.nvim" },
-		{ "vimwiki/vimwiki" },
 		{ "gruvbox-community/gruvbox" },
 		{ "github/copilot.vim" },
 		{ "hrsh7th/nvim-cmp" },
@@ -70,6 +69,15 @@ require("lazy").setup({
 			config = function()
 				require("ts-node-action").setup({})
 			end
+		},
+		{
+			'MeanderingProgrammer/render-markdown.nvim',
+			dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+			-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+			-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+			---@module 'render-markdown'
+			---@type render.md.UserConfig
+			opts = {},
 		},
 		{
 			dir = "~/workspace/caido.nvim",

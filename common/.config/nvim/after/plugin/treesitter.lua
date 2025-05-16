@@ -1,9 +1,9 @@
 require 'nvim-treesitter.configs'.setup {
 	-- A list of parser names, or "all"
-	ensure_installed = { "c", "lua", "javascript", "typescript", "jsdoc", "json", "python", "query", "html", "css", "bash", "dockerfile", "rust", "go" },
+	-- ensure_installed = { "c", "lua", "javascript", "typescript", "jsdoc", "json", "python", "query", "html", "css", "bash", "dockerfile", "rust", "go" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
-	sync_install = false,
+	-- sync_install = false,
 
 	-- List of parsers to ignore installing (for "all")
 	-- ignore_install = { "javascript" },
@@ -27,8 +27,8 @@ require 'nvim-treesitter.configs'.setup {
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "<CR>",
-			scope_incremental = "<CR>",
+			-- init_selection = "<CR>",
+			-- scope_incremental = "<CR>",
 			node_incremental = "<TAB>",
 			node_decremental = "<S-TAB>",
 		}

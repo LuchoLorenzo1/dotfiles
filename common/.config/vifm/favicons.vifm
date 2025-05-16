@@ -15,7 +15,7 @@ set classify+='  ::ledger::'
 set classify+='  ::license,,copyright,,copying,,LICENSE,,COPYRIGHT,,COPYING::'
 set classify+='  ::node_modules::'
 set classify+='  ::react.jsx::'
-set classify+='  ::Dockerfile::'
+set classify+='  ::Dockerfile,,docker-compose.yaml,,docker-compose.yml::'
 
 " File extensions
 set classify+='  ::*.rc,,*.conf,,*.cnf::'
