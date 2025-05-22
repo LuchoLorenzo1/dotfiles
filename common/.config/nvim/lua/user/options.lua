@@ -85,19 +85,15 @@ augroup END
 "   \ 'template_default': 'default',
 "   \ 'template_ext': '.html'}]
 
-" augroup vimrc_vimwiki
-"     au FileType vimwiki nnoremap <F4> :Vimwiki2HTMLBrowse <cr>
-"     " au FileType vimwiki nnoremap <leader> :Vimwiki2HTMLBrowse  <cr>
-"     au FileType vimwiki nnoremap <leader>* m`0i* <Esc>``
-"     au FileType vimwiki inoremap ]a á
-"     au FileType vimwiki inoremap ]e é
-"     au FileType vimwiki inoremap ]o ó
-"     au FileType vimwiki inoremap ]i í
-"     au FileType vimwiki inoremap ]u ú
-"     au FileType vimwiki inoremap ]A Á
-"     au FileType vimwiki inoremap ]n ñ
-" 	au filetype vimwiki silent! iunmap <buffer> <Tab>
-" augroup END
+augroup markdown
+    au FileType markdown inoremap ]a á
+    au FileType markdown inoremap ]e é
+    au FileType markdown inoremap ]o ó
+    au FileType markdown inoremap ]i í
+    au FileType markdown inoremap ]u ú
+    au FileType markdown inoremap ]A Á
+    au FileType markdown inoremap ]n ñ
+augroup END
 
 
 " set statusline=
