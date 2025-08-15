@@ -6,7 +6,7 @@ import subprocess
 lazy.hide_show_bar("bottom")
 mod = "mod4"
 
-protected_apps = ["chromium", "firefox", "postman", "wireshark", "spotify", "burpsuite"]
+protected_apps = ["chromium", "firefox", "postman", "wireshark", "spotify", "burpsuite", "caido"]
 
 @lazy.function
 def maybe_kill_protected(qtile):

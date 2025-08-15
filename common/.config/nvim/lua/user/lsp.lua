@@ -1,7 +1,9 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup {
-	ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ts_ls", "eslint", "cssls", "tailwindcss", "html", "htmx", "gopls", "graphql", "clangd", "bashls" },
+	ensure_installed = { 
+		"lua_ls", "rust_analyzer", "pyright", "ts_ls", "eslint", "cssls", -- "tailwindcss"
+		"html", "htmx", "gopls", "graphql", "clangd", "bashls" },
 }
 
 local opts = { noremap = true, silent = true }
@@ -44,83 +46,74 @@ local on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
 end
 
-require("mason-lspconfig").setup_handlers {
-	function(server_name)
-		require("lspconfig")[server_name].setup {
-			on_attach = on_attach,
-		}
-	end,
-
-	["rust_analyzer"] = function()
-		require('lspconfig').rust_analyzer.setup({
-			on_attach = on_attach,
-			settings = {
-				["rust-analyzer"] = {
-					imports = {
-						granularity = {
-							group = "crate",
-						},
-						prefix = "self",
-					},
-					cargo = {
-						buildScripts = {
-							enable = true,
-						},
-					},
-					procMacro = {
-						enable = true
-					},
-				}
-			}
-		})
-	end,
-
-	["lua_ls"] = function()
-		require('lspconfig').lua_ls.setup {
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					}
-				}
-			}
-		}
-	end,
-
-	["pyright"] = function()
-		require('lspconfig').pyright.setup {
-			on_attach = on_attach,
-			settings = {
-				pyright = {
-					autoImportCompletion = true,
-					useLibraryCodeForTypes = true
-				},
-				python = {
-					analysis = {
-						autoSearchPaths = true,
-						diagnosticMode = 'openFilesOnly',
-						useLibraryCodeForTypes = true,
-						typeCheckingMode = 'off'
-					}
-				}
-			}
-		}
-	end,
-
-	["cssls"] = function()
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities.textDocument.completion.completionItem.snippetSupport = true
-		require('lspconfig').cssls.setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		}
-	end,
-
-	["clangd"] = function()
-		require('lspconfig').clangd.setup {
-			on_attach = on_attach,
-			cmd = { "clangd", "--offset-encoding=utf-16" },
-		}
-	end,
+vim.lsp.config.rust_analyzer = {
+  on_attach = on_attach,
+  settings = {
+    ["rust-analyzer"] = {
+      imports = {
+        granularity = {
+          group = "crate",
+        },
+        prefix = "self",
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true,
+      },
+    },
+  },
 }
+
+vim.lsp.config.lua_ls = {
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+}
+
+vim.lsp.config.pyright = {
+  on_attach = on_attach,
+  settings = {
+    pyright = {
+      autoImportCompletion = true,
+      useLibraryCodeForTypes = true,
+    },
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'openFilesOnly',
+        useLibraryCodeForTypes = true,
+        typeCheckingMode = 'off',
+      },
+    },
+  },
+}
+
+local cssls_capabilities = vim.lsp.protocol.make_client_capabilities()
+cssls_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.lsp.config.cssls = {
+  on_attach = on_attach,
+  capabilities = cssls_capabilities,
+}
+
+vim.lsp.config.clangd = {
+  on_attach = on_attach,
+  cmd = { "clangd", "--offset-encoding=utf-16" },
+}
+
+vim.lsp.config("*", {
+	on_attach = on_attach,
+})
+
+-- Setup default for all other servers installed via Mason
+require("mason").setup()
+require("mason-lspconfig").setup()

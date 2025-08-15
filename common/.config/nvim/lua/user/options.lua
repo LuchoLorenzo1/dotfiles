@@ -217,3 +217,5 @@ augroup AngularComponent
   autocmd BufReadPost *.ts,*.html,*.css lua vim.api.nvim_set_keymap('n', '<c-t>', ':lua ToggleExtension()<CR>', { noremap = true, silent = true })
 augroup END
 ]])
+
+vim.keymap.set("v", "<leader>rp", ":!python3 -c \"import sys; print(eval(sys.stdin.read()))\"<CR>", { desc = "Eval Python selección y reemplaza" })

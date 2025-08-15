@@ -43,7 +43,7 @@ require("lazy").setup({
 		{ "machakann/vim-sandwich" },
 		{ "matze/vim-move" },
 		{ "tpope/vim-repeat" },
-		{ "lewis6991/gitsigns.nvim" },
+		-- { "lewis6991/gitsigns.nvim" },
 		{ "tpope/vim-fugitive" },
 		{ "tpope/vim-rhubarb" },
 		{ "junegunn/gv.vim" },
@@ -70,15 +70,15 @@ require("lazy").setup({
 				require("ts-node-action").setup({})
 			end
 		},
-		{
-			'MeanderingProgrammer/render-markdown.nvim',
-			dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-			-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-			-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-			---@module 'render-markdown'
-			---@type render.md.UserConfig
-			opts = {},
-		},
+		-- {
+		-- 	'MeanderingProgrammer/render-markdown.nvim',
+		-- 	dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+		-- 	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- 	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		-- 	---@module 'render-markdown'
+		-- 	---@type render.md.UserConfig
+		-- 	opts = {},
+		-- },
 		{
 			dir = "~/workspace/caido.nvim",
 			config = function()

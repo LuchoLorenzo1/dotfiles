@@ -19,7 +19,7 @@ require('gitsigns').setup {
 	watch_gitdir                 = {
 		follow_files = true
 	},
-	attach_to_untracked          = true,
+	attach_to_untracked          = false,
 	current_line_blame           = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
 	current_line_blame_opts      = {
 		virt_text = true,
@@ -47,6 +47,10 @@ require('gitsigns').setup {
 
 require('gitsigns').setup {
 	on_attach = function(bufnr)
+		if vim.bo[bufnr].filetype == "NvimTree" then
+			return
+		end
+
 		local gs = package.loaded.gitsigns
 
 		local function map(mode, l, r, opts)

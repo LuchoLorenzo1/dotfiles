@@ -9,8 +9,8 @@ def go_to_group(name: str, monitor: int):
         qtile.groups_map[name].toscreen()
     return _inner
 
-monitors = [1, 0, 2, 1, 0, 2, -1]
-# monitors = [2, 0, 1, 2, 0, 1, -1]
+# monitors = [1, 0, 2, 1, 0, 2, -1]
+monitors = [2, 0, 1, 2, 0, 1, -1]
 groups = [Group(i) for i in ("u", "i", "o", "7", "8", "9", "p")]
 for i, group in enumerate(groups):
     key = i

@@ -52,6 +52,8 @@ def workspaces():
     ]
 
 
+systray = widget.Systray(background=colors["dark"], padding=5),
+
 primary_widgets = [
     *workspaces(),
     separator(),
@@ -98,16 +100,98 @@ primary_widgets = [
 secondary_widgets = [
     *workspaces(),
     separator(),
+    icon(
+        bg="color4", text=" ", app="alacritty -e sudo pacman -Syu"
+    ),
+    widget.CheckUpdates(
+        background=colors["dark"],
+        colour_have_updates="ffffff",
+        colour_no_updates="ffffff",
+        distro="Arch",
+        no_update_string="0",
+        display_format="{updates}",
+        update_interval=1800,
+    ),
+    separator(),
+    icon(bg="color3",text='RAM'),
+    widget.Memory(
+        format='{MemUsed: .0f}{mm}',
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("alacritty -e htop")},
+    ),
+    separator(),
+    icon(bg="color3",text='CPU'),
+    widget.CPU(
+        format='{freq_current}GHz {load_percent}%',
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("alacritty -e htop")},
+    ),
+    separator(),
+    icon(bg="color3", text=" ", app="pavucontrol"),
+    widget.PulseVolume(
+        volume_app="pavucontrol",
+        volume_up_command="pactl --set-sink-volume 0 +1%",
+        volume_down_command="pactl --set-sink-volume 0 -1%",
+        update_interval=0.01667,
+    ),
+    separator(),
     widget.Clock(format="%d/%m - %H:%M"),
     separator(),
-]   
+    widget.KeyboardLayout(configured_keyboards=['us', 'es'], mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("toggle_lang")},),
+]
 
 tertiary_widgets = [
     *workspaces(),
     separator(),
+    icon(
+        bg="color4", text=" ", app="alacritty -e sudo pacman -Syu"
+    ),
+    widget.CheckUpdates(
+        background=colors["dark"],
+        colour_have_updates="ffffff",
+        colour_no_updates="ffffff",
+        distro="Arch",
+        no_update_string="0",
+        display_format="{updates}",
+        update_interval=1800,
+    ),
+    separator(),
+    icon(bg="color3",text='RAM'),
+    widget.Memory(
+        format='{MemUsed: .0f}{mm}',
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("alacritty -e htop")},
+    ),
+    separator(),
+    icon(bg="color3",text='CPU'),
+    widget.CPU(
+        format='{freq_current}GHz {load_percent}%',
+        mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("alacritty -e htop")},
+    ),
+    separator(),
+    icon(bg="color3", text=" ", app="pavucontrol"),
+    widget.PulseVolume(
+        volume_app="pavucontrol",
+        volume_up_command="pactl --set-sink-volume 0 +1%",
+        volume_down_command="pactl --set-sink-volume 0 -1%",
+        update_interval=0.01667,
+    ),
+    separator(),
     widget.Clock(format="%d/%m - %H:%M"),
     separator(),
-]   
+    widget.KeyboardLayout(configured_keyboards=['us', 'es'], mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("toggle_lang")},),
+]
+
+# secondary_widgets = [
+#     *workspaces(),
+#     separator(),
+#     widget.Clock(format="%d/%m - %H:%M"),
+#     separator(),
+# ]   
+#
+# tertiary_widgets = [
+#     *workspaces(),
+#     separator(),
+#     widget.Clock(format="%d/%m - %H:%M"),
+#     separator(),
+# ]   
 
 widget_defaults = {
     "font": "UbuntuMono Nerd Font Bold",
@@ -115,4 +199,5 @@ widget_defaults = {
     "padding": 1,
     "background": colors["dark"],
 }
+
 extension_defaults = widget_defaults.copy()
