@@ -1,9 +1,9 @@
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- vim.opt.termguicolors = true
+local has_nvim_tree, nvim_tree = pcall(require, "nvim-tree")
+if not has_nvim_tree then
+	return
+end
 
-require("nvim-tree").setup({
-	-- sort_by = "case_sensitive",
+nvim_tree.setup({
 	hijack_netrw = true,
 	disable_netrw = false,
 	renderer = {
@@ -20,21 +20,13 @@ require("nvim-tree").setup({
 })
 
 local function open_nvim_tree(data)
-	-- local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
 	local directory = vim.fn.isdirectory(data.file) == 1
-
-	-- if not no_name and not directory then
-	-- 	return
-	-- end
 
 	if not directory then
 		return
 	end
 
-	if directory then
-		vim.cmd.cd(data.file)
-	end
-
+	vim.cmd.cd(data.file)
 	require("nvim-tree.api").tree.open()
 end
 

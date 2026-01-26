@@ -3,8 +3,8 @@ if not has_gitsigns then
 	return
 end
 
-require('gitsigns').setup {
-	signs                        = {
+gitsigns.setup {
+	signs = {
 		add          = { text = '│' },
 		change       = { text = '│' },
 		delete       = { text = '_' },
@@ -12,40 +12,33 @@ require('gitsigns').setup {
 		changedelete = { text = '~' },
 		untracked    = { text = '┆' },
 	},
-	signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
-	numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
-	linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
-	word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`
+	signcolumn                   = true,
+	numhl                        = false,
+	linehl                       = false,
+	word_diff                    = false,
 	watch_gitdir                 = {
 		follow_files = true
 	},
 	attach_to_untracked          = false,
-	current_line_blame           = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	current_line_blame           = true,
 	current_line_blame_opts      = {
 		virt_text = true,
-		virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
+		virt_text_pos = 'right_align',
 		delay = 1000,
 		ignore_whitespace = false,
 	},
 	current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
 	sign_priority                = 6,
 	update_debounce              = 100,
-	status_formatter             = nil, -- Use default
-	max_file_length              = 40000, -- Disable if file is longer than this (in lines)
+	status_formatter             = nil,
+	max_file_length              = 40000,
 	preview_config               = {
-		-- Options passed to nvim_open_win
 		border = 'single',
 		style = 'minimal',
 		relative = 'cursor',
 		row = 0,
 		col = 1
 	},
-	-- yadm                         = {
-	-- 	enable = false
-	-- },
-}
-
-require('gitsigns').setup {
 	on_attach = function(bufnr)
 		if vim.bo[bufnr].filetype == "NvimTree" then
 			return
@@ -81,10 +74,8 @@ require('gitsigns').setup {
 		map('n', '<leader>hR', gs.reset_buffer)
 		map('n', '<leader>hp', gs.preview_hunk)
 		map('n', '<leader>hb', function() gs.blame_line { full = true } end)
-		-- map('n', '<leader>tb', gs.toggle_current_line_blame)
 		map('n', '<leader>hd', gs.diffthis)
 		map('n', '<leader>hD', function() gs.diffthis('~') end)
-		-- map('n', '<leader>td', gs.toggle_deleted)
 
 		map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 	end

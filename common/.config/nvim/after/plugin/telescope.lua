@@ -111,18 +111,11 @@ telescope.setup {
 			sections = { "1", "2", "3" },
 		}
 	},
-	extensions = {
-		workspaces = {
-			-- keep insert mode after selection in the picker, default is false
-			keep_insert = true,
-		}
-	},
 }
 
-vim.api.nvim_set_keymap("n", "<leader>t", ":Telescope <CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.git_files()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<c-f>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua require'telescope.builtin'.live_grep()<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<leader>b", "<cmd>lua require'telescope.builtin'.buffers()<CR>", { silent = true })
-
-vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>Telescope workspaces<CR>", { silent = true })
+local builtin = require('telescope.builtin')
+vim.keymap.set("n", "<leader>t", ":Telescope <CR>", { silent = true })
+vim.keymap.set("n", "<leader>f", builtin.git_files, { silent = true })
+vim.keymap.set("n", "<c-f>", builtin.find_files, { silent = true })
+vim.keymap.set("n", "<leader>g", builtin.live_grep, { silent = true })
+vim.keymap.set("n", "<leader>b", builtin.buffers, { silent = true })

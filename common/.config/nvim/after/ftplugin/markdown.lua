@@ -79,9 +79,9 @@ local function goto_prev_markdown_link()
 end
 
 local function file_to_html()
-	vim.cmd("silent !~/wiki/md_to_html %:p")
+	vim.cmd("silent !" .. vim.fn.expand("~/wiki/md_to_html") .. " %:p")
 
-	local source_dir = "/home/lucho/wiki/markdown/"
+	local source_dir = vim.fn.expand("~/wiki/markdown/")
 	local path = vim.fn.expand("%:p")
 
 	local relative_path = path:gsub("^" .. vim.pesc(source_dir), "")

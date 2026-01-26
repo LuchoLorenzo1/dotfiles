@@ -53,7 +53,12 @@ require("lazy").setup({
 		{ "ThePrimeagen/harpoon" },
 		{ 'nvim-tree/nvim-tree.lua' },
 		{ 'nvim-tree/nvim-web-devicons' },
-		{ 'RaafatTurki/hex.nvim' },
+		{
+			'RaafatTurki/hex.nvim',
+			config = function()
+				require('hex').setup()
+			end
+		},
 		{
 			"windwp/nvim-autopairs",
 			config = function()
@@ -63,12 +68,6 @@ require("lazy").setup({
 		{
 			'numToStr/Comment.nvim',
 			config = function() require('Comment').setup() end
-		},
-		{
-			'RaafatTurki/hex.nvim',
-			config = function()
-				require 'hex'.setup()
-			end
 		},
 		{
 			'ckolkey/ts-node-action',
