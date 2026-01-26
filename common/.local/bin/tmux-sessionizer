@@ -1,32 +1,61 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 directories_file="$HOME/.local/share/sessionizer-folders"
+
+expand_tilde() {
+    if [[ $1 == "~"* ]]; then
+        printf '%s\n' "${1/#\~/$HOME}"
+    else
+        printf '%s\n' "$1"
+    fi
+}
+
 if [[ $# -eq 1 ]]; then
-    selected=$1
+    selected=$(expand_tilde "$1")
 else
-	expanded_dirs=$(sed "s|^~|$HOME|" "$directories_file")
-	selected=$(echo "$expanded_dirs" | xargs -I {} find {} -mindepth 1 -maxdepth 1 -type d | fzf)
+    if [[ ! -f $directories_file ]]; then
+        printf 'sessionizer: missing %s\n' "$directories_file" >&2
+        exit 1
+    fi
+
+    candidates=()
+    while IFS= read -r line || [[ -n $line ]]; do
+        [[ -z $line || ${line:0:1} == "#" ]] && continue
+        dir=$(expand_tilde "$line")
+        [[ -d $dir ]] || continue
+        while IFS= read -r sub; do
+            candidates+=("$sub")
+        done < <(find "$dir" -mindepth 1 -maxdepth 1 -type d)
+    done < "$directories_file"
+
+    if [[ ${#candidates[@]} -eq 0 ]]; then
+        exit 0
+    fi
+
+    selected=$(printf '%s\n' "${candidates[@]}" | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z ${selected:-} ]]; then
     exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+created=0
+if ! tmux has-session -t "$selected_name" 2>/dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    created=1
 fi
 
-if !(tmux has-session -t $selected_name 2> /dev/null)
-then
-    tmux new-session -ds $selected_name -c $selected
+if [[ $created -eq 1 ]]; then
+    tmux send-keys -t "$selected_name" vifm ' ' "$selected" Enter
+    tmux neww -c "$selected" -t "$selected_name" nvim .
+fi
+
+if [[ -z ${TMUX:-} ]]; then
+    tmux attach-session -t "$selected_name"
 else
-	tmux switch-client -t $selected_name
-	exit 0
+    tmux switch-client -t "$selected_name"
 fi
-
-tmux switch-client -t $selected_name
-tmux send-keys -t $selected_name vifm ' ' $selected Enter
-tmux neww -c $selected -t $selected_name nvim .

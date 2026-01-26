@@ -75,7 +75,7 @@ keys = [
         # ([mod], "e", lazy.spawn('toggle_lang')),
         ([mod], "e", lazy.widget["keyboardlayout"].next_keyboard()),
 
-        ([mod], "Return", lazy.spawn("alacritty")),
+        ([mod], "Return", lazy.spawn("alacritty -e tmux")),
 
 
         # ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
