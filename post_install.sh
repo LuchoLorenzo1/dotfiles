@@ -23,12 +23,13 @@ echo -e "${yellowColor}\n ENTER para empezar instalando lo mas importante: (git 
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	sudo sed 's/^#ParallelDownloads.*/ParallelDownloads = 20/' /etc/pacman.conf -i
 
-	pacman --noconfirm -Sy git xorg xorg-xinit base-devel
+	pacman --noconfirm -Sy git xorg xorg-xinit base-devel xorg-xinput xorg-xbacklight
 
 	git config --global credential.helper store
 	git config --global user.email "LuchoLorenzo1@users.noreply.github.com"
 	git config --global user.name "Luciano Lorenzo"
 	git config --global init.defaultBranch main
+
 fi
 
 echo -e "${yellowColor}Instalar drivers? [Y/n]${endColor}"; read response
@@ -80,16 +81,33 @@ fi
 echo -e "${yellowColor}Instalar paquetes esenciales? [Y/n]${endColor}"; read response
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	pacman -S pulseaudio pavucontrol
-	pacman -S vifm chromium tmux rofi lsd bat starship alacritty fzf feh redshift picom ttf-cascadia-code ttf-nerd-fonts-symbols noto-fonts-emoji xsel wget jq
+	pacman -S zsh vifm chromium tmux rofi lsd bat starship alacritty fzf feh redshift picom ttf-cascadia-code ttf-nerd-fonts-symbols noto-fonts-emoji xsel wget jq
 
 	sudo -u lucho yay -S dragon-drop caido tree-sitter
 
+	# setup alacritty
 	pacman --noconfirm -S docker docker-compose
 	usermod -aG docker lucho
 	systemctl enable docker
+
+	# change default shell
+	chsh -s /bin/zsh lucho
+
+	# tmux plugins
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 echo -e "${yellowColor}Instalar paquetes NO TAN esenciales? [Y/n]${endColor}"; read response
 if [[ $response =~ [yY] ]] || [ -z $response ]; then
 	pacman --noconfirm -S flameshot discord pinta ueberzug unzip poppler ripgrep fd zip vlc tinyxxd
 fi
+
+echo -e "${yellowColor}Install rust [Y/n]${endColor}"; read response
+if [[ $response =~ [yY] ]] || [ -z $response ]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+## Invert mouse scrolling
+# xinput 
+# xinput list-props 11
+# xinput set-prop 11 "libinput Natural Scrolling Enabled" 1

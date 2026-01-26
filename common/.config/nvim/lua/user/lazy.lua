@@ -43,7 +43,7 @@ require("lazy").setup({
 		{ "machakann/vim-sandwich" },
 		{ "matze/vim-move" },
 		{ "tpope/vim-repeat" },
-		-- { "lewis6991/gitsigns.nvim" },
+		{ "lewis6991/gitsigns.nvim" },
 		{ "tpope/vim-fugitive" },
 		{ "tpope/vim-rhubarb" },
 		{ "junegunn/gv.vim" },
@@ -53,6 +53,7 @@ require("lazy").setup({
 		{ "ThePrimeagen/harpoon" },
 		{ 'nvim-tree/nvim-tree.lua' },
 		{ 'nvim-tree/nvim-web-devicons' },
+		{ 'RaafatTurki/hex.nvim' },
 		{
 			"windwp/nvim-autopairs",
 			config = function()

@@ -132,8 +132,6 @@ augroup END
 
 au FileType * set fo-=c fo-=r fo-=o
 
-source $HOME/.local/share/nvim/site/pack/packer/start/vim-sandwich/macros/sandwich/keymap/surround.vim
-
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 let g:git_messenger_no_default_mappings = v:true

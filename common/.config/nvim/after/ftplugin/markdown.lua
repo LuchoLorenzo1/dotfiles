@@ -1,18 +1,27 @@
 local function open_link_as_md()
-	local line = vim.fn.getline(".")
-	local file_path = line:match("%[.-%]%((.-)%)")
-	if file_path then
-		local current_dir = vim.fn.expand("%:h")
-		local full_path = current_dir .. "/" .. file_path .. ".md"
-		if vim.fn.filereadable(full_path) == 1 then
-			vim.cmd("edit " .. full_path)
-		else
-			vim.cmd("edit " .. full_path)
-			-- vim.api.nvim_err_writeln("File does not exist: " .. full_path)
-		end
-	else
-		vim.api.nvim_err_writeln("No link found in this line.")
-	end
+  local line = vim.fn.getline(".")
+  local file_path = line:match("%[.-%]%((.-)%)")
+  if not file_path then
+    return
+  end
+
+  -- Check if it's a URL
+  if file_path:match("^https?://") or file_path:match("^www%.") then
+    -- Open in the default browser
+    vim.fn.jobstart({ "xdg-open", file_path }, { detach = true })
+    return
+  end
+
+  -- Otherwise treat it as a local markdown file
+  local current_dir = vim.fn.expand("%:h")
+  local full_path = current_dir .. "/" .. file_path .. ".md"
+  if vim.fn.filereadable(full_path) == 1 then
+    vim.cmd("edit " .. full_path)
+  else
+    vim.cmd("edit " .. full_path)
+    -- or show an error instead:
+    -- vim.api.nvim_err_writeln("File does not exist: " .. full_path)
+  end
 end
 
 

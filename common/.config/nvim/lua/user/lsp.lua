@@ -1,7 +1,6 @@
 require("mason").setup()
-
 require("mason-lspconfig").setup {
-	ensure_installed = { 
+	ensure_installed = {
 		"lua_ls", "rust_analyzer", "pyright", "ts_ls", "eslint", "cssls", -- "tailwindcss"
 		"html", "htmx", "gopls", "graphql", "clangd", "bashls" },
 }
@@ -15,7 +14,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 local lsp_keymaps = function(bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	local bufopts = { noremap = true, silent = false, buffer = bufnr }
 
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -47,73 +46,85 @@ local on_attach = function(client, bufnr)
 end
 
 vim.lsp.config.rust_analyzer = {
-  on_attach = on_attach,
-  settings = {
-    ["rust-analyzer"] = {
-      imports = {
-        granularity = {
-          group = "crate",
-        },
-        prefix = "self",
-      },
-      cargo = {
-        buildScripts = {
-          enable = true,
-        },
-      },
-      procMacro = {
-        enable = true,
-      },
-    },
-  },
+	on_attach = on_attach,
+	settings = {
+		["rust-analyzer"] = {
+			imports = {
+				granularity = {
+					group = "crate",
+				},
+				prefix = "self",
+			},
+			cargo = {
+				buildScripts = {
+					enable = true,
+				},
+			},
+			procMacro = {
+				enable = true,
+			},
+		},
+	},
 }
 
 vim.lsp.config.lua_ls = {
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 }
 
 vim.lsp.config.pyright = {
-  on_attach = on_attach,
-  settings = {
-    pyright = {
-      autoImportCompletion = true,
-      useLibraryCodeForTypes = true,
-    },
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = 'openFilesOnly',
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off',
-      },
-    },
-  },
+	on_attach = on_attach,
+	settings = {
+		pyright = {
+			autoImportCompletion = true,
+			useLibraryCodeForTypes = true,
+		},
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = 'openFilesOnly',
+				useLibraryCodeForTypes = true,
+				typeCheckingMode = 'off',
+			},
+		},
+	},
+}
+
+vim.lsp.config.ts_ls = {
+	on_attach = function(client, bufnr)
+		print("Hover: ", client.server_capabilities.hoverProvider)
+		print("SignatureHelp: ", client.server_capabilities.signatureHelpProvider)
+		-- print(vim.inspect(client.server_capabilities))
+		on_attach(client, bufnr)
+	end,
 }
 
 local cssls_capabilities = vim.lsp.protocol.make_client_capabilities()
 cssls_capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.lsp.config.cssls = {
-  on_attach = on_attach,
-  capabilities = cssls_capabilities,
+	on_attach = on_attach,
+	capabilities = cssls_capabilities,
 }
 
 vim.lsp.config.clangd = {
-  on_attach = on_attach,
-  cmd = { "clangd", "--offset-encoding=utf-16" },
+	on_attach = on_attach,
+	cmd = { "clangd", "--offset-encoding=utf-16" },
 }
 
 vim.lsp.config("*", {
 	on_attach = on_attach,
 })
 
+for name, _ in pairs(vim.lsp.config) do
+  vim.lsp.enable(name)
+end
 -- Setup default for all other servers installed via Mason
-require("mason").setup()
-require("mason-lspconfig").setup()
+-- require("mason").setup()
+-- require("mason-lspconfig").setup()
