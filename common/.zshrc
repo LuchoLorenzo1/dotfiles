@@ -118,7 +118,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias v="nvim"
 alias vim="nvim"
 alias vifm="vifmrun"
-alias cat='/bin/bat --theme OneHalfDark';
+alias cat='/bin/bat --theme OneHalfDark -p';
 alias la='lsd -la --group-dirs=first';
 alias ls='lsd --group-dirs=first';
 alias fonts='fc-list | fzf'

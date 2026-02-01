@@ -48,7 +48,7 @@ y = 0
 decorations = "none"
 dynamic_padding = false
 dynamic_title = true
-opacity = 0.98
+opacity = 0.95
 
 [window.padding]
 x = 0

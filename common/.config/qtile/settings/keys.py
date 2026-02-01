@@ -76,7 +76,7 @@ keys = [
         ([mod], "e", lazy.widget["keyboardlayout"].next_keyboard()),
 
         ([mod], "Return", lazy.spawn("alacritty -e tmux")),
-
+        ([mod], "backslash", lazy.spawn("alacritty -e ssh -t lucho@svc.local 'bash -lc \"tmux new -A -s main\"'")),
 
         # ([mod], "b", lazy.group["7"].toscreen(), lazy.spawn("chromium")),
         # ([mod], "p", lazy.group["0"].toscreen(), lazy.spawn("discord")),
