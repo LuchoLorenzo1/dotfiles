@@ -52,6 +52,9 @@ fi
 if [[ $created -eq 1 ]]; then
     tmux send-keys -t "$selected_name" vifm ' ' "$selected" Enter
     tmux neww -c "$selected" -t "$selected_name" nvim .
+    tmux neww -c "$selected" -t "$selected_name"
+    tmux neww -c "$selected" -t "$selected_name" claude
+    tmux select-window -t "$selected_name":2
 fi
 
 if [[ -z ${TMUX:-} ]]; then
