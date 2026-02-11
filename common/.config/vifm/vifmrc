@@ -35,7 +35,11 @@ nnoremap <C-d> :dragon<CR>
 
 " set vicmd=nvim\ --server\ /tmp/nvim.pipe\ --remote\
 
-set vicmd=nvim
+if $TMUX != ''
+    set vicmd='sh -c "current_window=\$(tmux display-message -p \"#{window_index}\"); file=\$(realpath -- \"\$*\"); if [ \"\$current_window\" = \"2\" ]; then nvim \"\$@\"; else if tmux select-window -t 2 2>/dev/null; then tmux send-keys \":e \$file\" Enter; else tmux new-window -t 2; tmux send-keys \"nvim \$file\" Enter; fi; fi" sh'
+else
+    set vicmd=nvim
+endif
 
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
